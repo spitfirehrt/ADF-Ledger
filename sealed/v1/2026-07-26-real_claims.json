@@ -1,0 +1,182 @@
+{
+  "epoch": "v1",
+  "sealed_utc": "2026-07-26T11:27:16Z",
+  "sealed_date": "2026-07-26",
+  "sealed_against_commit": "926a6b961e4600c43cb4f6deb5cf4948c56c886b",
+  "claim_count": 3,
+  "claim_ids": [
+    "AVGO-wafer-hike-multiple-2027",
+    "HBM-zerosum-skhynix-spread-2026",
+    "QCOM-septq-rev-yoy-2026"
+  ],
+  "claims": [
+    {
+      "claim_id": "AVGO-wafer-hike-multiple-2027",
+      "epoch": "v1",
+      "tag": "ALPHA",
+      "address": {
+        "nodes": [
+          "AVGO",
+          "TSM"
+        ],
+        "edges": [
+          "TSM__AVGO__foundry_wafers"
+        ],
+        "subgraph": null
+      },
+      "statement": "TSMC's 10% 2027 wafer price hike is a negative-sign cost shock to fabless margins (AVGO 0.95, AMD 0.85, NVDA 0.85) that the AI-demand narrative counts as strictly positive.",
+      "cited_wall": [
+        {
+          "ticker": "AVGO",
+          "field": "price_target.mean",
+          "value": 525.44,
+          "relation": "deviates_from"
+        }
+      ],
+      "observable": {
+        "metric": "AVGO share price (multiple/margin compression)",
+        "actual_key": "AVGO.price",
+        "source_of_actual": "yfinance:AVGO:price",
+        "comparator": "<=",
+        "threshold": 480,
+        "unit": "USD",
+        "as_of_date": "2027-01-31"
+      },
+      "fails_if": {
+        "metric": "AVGO share price",
+        "actual_key": "AVGO.price",
+        "source_of_actual": "yfinance:AVGO:price",
+        "comparator": ">=",
+        "threshold": 560,
+        "unit": "USD",
+        "as_of_date": "2027-01-31"
+      },
+      "window": [
+        2
+      ],
+      "mode": "job_a_epoch",
+      "created_utc": "2026-07-26T06:30:00Z",
+      "sealed_commit": "926a6b961e4600c43cb4f6deb5cf4948c56c886b",
+      "note": "Kept from run-1 candidate C10 (KEEP). A share-price observable is legitimate here under R-OBSERVABLE because the claim is explicitly about the MULTIPLE/margin (a cost-shock compression), not a revenue print. Window [2], stated reason (R-WINDOW-MIX): multiple compression from a 2027 wafer-price step needs two earnings prints (AVGO reports ~early Dec 2026 and ~early Mar 2027) to show in the tape; no faster metric measures a multiple re-rating."
+    },
+    {
+      "claim_id": "HBM-zerosum-skhynix-spread-2026",
+      "epoch": "v1",
+      "tag": "ALPHA",
+      "address": {
+        "nodes": [
+          "MU",
+          "SKHYNIX",
+          "SAMSUNG"
+        ],
+        "edges": [
+          "MU__SKHYNIX__hbm_capacity",
+          "SKHYNIX__NVDA__hbm",
+          "SAMSUNG__NVDA__hbm"
+        ],
+        "subgraph": {
+          "label": "HBM-memory-cluster",
+          "nodes": [
+            "MU",
+            "SKHYNIX",
+            "SAMSUNG"
+          ],
+          "edges": [
+            "MU__SKHYNIX__hbm_capacity",
+            "SKHYNIX__NVDA__hbm",
+            "SAMSUNG__NVDA__hbm"
+          ]
+        }
+      },
+      "statement": "The memory cluster is priced as uniformly rallying (MU +64%, SKHYNIX +94%, SAMSUNG +97%), but the only negative edge on the board makes HBM share zero-sum, so at least one must disappoint.",
+      "cited_wall": [
+        {
+          "ticker": "SKHYNIX",
+          "field": "price_target.mean",
+          "value": 3408502.2,
+          "relation": "deviates_from"
+        },
+        {
+          "ticker": "SAMSUNG",
+          "field": "price_target.mean",
+          "value": 492536.72,
+          "relation": "agrees_with"
+        }
+      ],
+      "observable": {
+        "metric": "SKHYNIX total return minus mean total return of {MU, SAMSUNG}, seal date to 2026-12-31",
+        "actual_key": "HBM.skhynix_spread",
+        "source_of_actual": "computed:spread_total_return:SKHYNIX:MU,SAMSUNG:2026-07-26:2026-12-31",
+        "comparator": "<=",
+        "threshold": -0.1,
+        "unit": "ratio",
+        "as_of_date": "2026-12-31"
+      },
+      "fails_if": {
+        "metric": "SKHYNIX total return minus mean total return of {MU, SAMSUNG}, seal date to 2026-12-31",
+        "actual_key": "HBM.skhynix_spread",
+        "source_of_actual": "computed:spread_total_return:SKHYNIX:MU,SAMSUNG:2026-07-26:2026-12-31",
+        "comparator": ">=",
+        "threshold": 0.1,
+        "unit": "ratio",
+        "as_of_date": "2026-12-31"
+      },
+      "window": [
+        2
+      ],
+      "mode": "job_a_epoch",
+      "created_utc": "2026-07-26T06:30:00Z",
+      "sealed_commit": "926a6b961e4600c43cb4f6deb5cf4948c56c886b",
+      "note": "Reworked from run-1 candidate C5 (KEEP-REWORK). Two fixes: (1) address.subgraph is now the required {label,nodes,edges} object (was a bare string, the run-1 schema fail); (2) the observable is a cross-sectional SPREAD, not a single price, so it tests the zero-sum CLAIM directly (relative under/out-performance) not a market-beta bet — SKHYNIX total return minus the mean of {MU, SAMSUNG} over seal->2026-12-31 (fetch_actuals computed:spread_total_return, adjusted-close / dividend-inclusive; per-name returns recorded in the actuals file). CONFIRM if SK Hynix trails the pair by >=10 pts; fails_if it leads by >=10. Q3-earnings checkpoints feed it (MU ~late Sept 2026, SK Hynix / Samsung Q3 ~late Oct 2026); resolves on the 2026-12-31 close (window [2])."
+    },
+    {
+      "claim_id": "QCOM-septq-rev-yoy-2026",
+      "epoch": "v1",
+      "tag": "ALPHA",
+      "address": {
+        "nodes": [
+          "QCOM"
+        ],
+        "edges": [
+          "SAMSUNG__QCOM__handset_socs",
+          "AAPL__QCOM__handset_modems"
+        ],
+        "subgraph": null
+      },
+      "statement": "The street frames Qualcomm as a structural decliner (rev growth -0.0668, hold) via Apple modem insourcing, missing the offsetting new Samsung flagship SoC win plus 2027 price hike.",
+      "cited_wall": [
+        {
+          "ticker": "QCOM",
+          "field": "revenue_estimate.0q.growth",
+          "value": -0.0668,
+          "relation": "deviates_from"
+        }
+      ],
+      "observable": {
+        "metric": "QCOM FY2026 Sept-quarter (fiscal Q4) revenue YoY growth",
+        "actual_key": "QCOM.septq_rev_yoy",
+        "source_of_actual": "computed:edgar_fyq4_yoy:QCOM:REVENUE:2026",
+        "comparator": ">",
+        "threshold": -0.0668,
+        "unit": "ratio",
+        "as_of_date": "2026-11-15"
+      },
+      "fails_if": {
+        "metric": "QCOM FY2026 Sept-quarter (fiscal Q4) revenue YoY growth",
+        "actual_key": "QCOM.septq_rev_yoy",
+        "source_of_actual": "computed:edgar_fyq4_yoy:QCOM:REVENUE:2026",
+        "comparator": "<=",
+        "threshold": -0.12,
+        "unit": "ratio",
+        "as_of_date": "2026-11-15"
+      },
+      "window": [
+        1
+      ],
+      "mode": "job_a_epoch",
+      "created_utc": "2026-07-26T06:30:00Z",
+      "sealed_commit": "926a6b961e4600c43cb4f6deb5cf4948c56c886b",
+      "note": "Reworked from run-1 candidate C8 (KEEP-REWORK). Observable moved from share price to the NEAREST measurable consequence (R-OBSERVABLE): EDGAR-filed revenue vs the cited consensus estimate. Verified QCOM files revenue under us-gaap:Revenues and has NO standalone Sept (fiscal Q4) quarter in companyfacts, so the Sept quarter is computed deterministically as annual - (Q1+Q2+Q3) for FY2026 and FY2025 (fetch_actuals computed:edgar_fyq4_yoy, formula + components recorded in the actuals file). The -0.0668 is QCOM's 0q (Sept-quarter) revenue-growth consensus; beating it CONFIRMS. Resolvable on the FY2026 10-K (~2026-11-05), before as_of 2026-11-15 (R-WINDOW-MIX fast claim, window [1])."
+    }
+  ]
+}

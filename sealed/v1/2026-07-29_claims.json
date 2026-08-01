@@ -1,0 +1,109 @@
+{
+  "epoch": "v1",
+  "sealed_utc": "2026-07-29T15:48:01Z",
+  "sealed_date": "2026-07-29",
+  "sealed_against_commit": "e330c91e124e290232429192f666fd97384e0286",
+  "claim_count": 2,
+  "claim_ids": [
+    "jobA-20260729T064012Z-C5",
+    "jobA-20260729T064012Z-C6"
+  ],
+  "claims": [
+    {
+      "claim_id": "jobA-20260729T064012Z-C5",
+      "epoch": "v1",
+      "tag": "ALPHA",
+      "address": {
+        "nodes": [
+          "KLA"
+        ],
+        "edges": [
+          "TSM__KLA__process_control"
+        ],
+        "subgraph": null
+      },
+      "statement": "KLA's TSM concentration (0.19, conf 0.90) plus the N2 ramp is under-priced — KLA carries the lowest upside/weakest rating of the equipment group despite the strongest single-customer capex tailwind.",
+      "cited_wall": [
+        {
+          "ticker": "KLA",
+          "field": "revenue_estimate.0q.growth",
+          "value": 0.1349,
+          "relation": "deviates_from"
+        }
+      ],
+      "observable": {
+        "metric": "KLA September-2026 quarter revenue YoY growth (FY2027 Q1, quarter ending 2026-09-30)",
+        "actual_key": "KLA.revenue_growth",
+        "source_of_actual": "computed:edgar_quarter_yoy:KLA:REVENUE:2026-09-30",
+        "comparator": ">=",
+        "threshold": 0.15,
+        "unit": "%",
+        "as_of_date": "2026-11-15"
+      },
+      "fails_if": {
+        "metric": "KLA September-2026 quarter revenue YoY growth (FY2027 Q1, quarter ending 2026-09-30)",
+        "actual_key": "KLA.revenue_growth",
+        "source_of_actual": "computed:edgar_quarter_yoy:KLA:REVENUE:2026-09-30",
+        "comparator": "<",
+        "threshold": 0.15,
+        "unit": "%",
+        "as_of_date": "2026-11-15"
+      },
+      "window": [
+        1
+      ],
+      "mode": "job_a_epoch",
+      "created_utc": "2026-07-29T06:40:12Z",
+      "sealed_commit": "e330c91e124e290232429192f666fd97384e0286",
+      "note": "soft-ALPHA margin (1.5pp over 13.49% consensus), operator-acknowledged. RESPEC (P-G6, pre-routing): the drafted observable (computed:edgar_fyq4_yoy:KLA:REVENUE:FY2026) was a LOOK-BACK bug — KLA has a JUNE 30 fiscal year end (verified vs SEC companyfacts: standalone quarters end Mar/Jun/Sep/Dec; the June fiscal-Q4 has no standalone XBRL fact, only annual-minus-3Q), so 'FY2026 Q4' = the Apr–Jun 2026 quarter that ALREADY reported in late July 2026 — sealing it would be a post-hoc prediction. Respec'd to KLA's SEPTEMBER-2026 quarter (FY2027 Q1, ending 2026-09-30; reports ~late Oct 2026), a genuine forward call. Source switched to the new STRICT formula computed:edgar_quarter_yoy (added this session): it resolves ONLY the exact quarter ending 2026-09-30 and returns UNRESOLVED until it is filed — it never silently backfills to the latest quarter (the edgar_qoq_yoy period-prefix hazard). Verified: the 2026-09-30 quarter is UNRESOLVED now (correct), and the formula computes a real YoY on the analogous 2025-09-30 quarter."
+    },
+    {
+      "claim_id": "jobA-20260729T064012Z-C6",
+      "epoch": "v1",
+      "tag": "ALPHA",
+      "address": {
+        "nodes": [
+          "AMKR"
+        ],
+        "edges": [
+          "AAPL__AMKR__osat_packaging",
+          "AMKR__TSM__adv_packaging_overflow"
+        ],
+        "subgraph": null
+      },
+      "statement": "AMKR is being framed as a CoWoS-overflow AI-packaging principal, but its dominant variable is the 29.8% Apple consumer-packaging book — a mature/seasonal mix that caps the AI upside (crosses packaging-osat -> handset via AAPL).",
+      "cited_wall": [
+        {
+          "ticker": "AMKR",
+          "field": "revenue_estimate.0q.growth",
+          "value": 0.1982,
+          "relation": "deviates_from"
+        }
+      ],
+      "observable": {
+        "metric": "AMKR quarterly revenue YoY growth",
+        "actual_key": "AMKR.revenue_growth",
+        "source_of_actual": "edgar:AMKR:Revenues",
+        "comparator": "<=",
+        "threshold": 0.15,
+        "unit": "%",
+        "as_of_date": "2026-10-31"
+      },
+      "fails_if": {
+        "metric": "AMKR quarterly revenue YoY growth",
+        "actual_key": "AMKR.revenue_growth",
+        "source_of_actual": "edgar:AMKR:Revenues",
+        "comparator": ">=",
+        "threshold": 0.1982,
+        "unit": "%",
+        "as_of_date": "2026-10-31"
+      },
+      "window": [
+        1
+      ],
+      "mode": "job_a_epoch",
+      "created_utc": "2026-07-29T06:40:12Z",
+      "sealed_commit": "e330c91e124e290232429192f666fd97384e0286"
+    }
+  ]
+}

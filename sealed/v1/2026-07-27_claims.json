@@ -1,0 +1,113 @@
+{
+  "epoch": "v1",
+  "sealed_utc": "2026-07-27T10:57:10Z",
+  "sealed_date": "2026-07-27",
+  "sealed_against_commit": "00985f4a1922b05b1a5d35b29e787408529abe4f",
+  "claim_count": 2,
+  "claim_ids": [
+    "jobA-20260727T075315Z-C4",
+    "jobA-20260727T075315Z-C8"
+  ],
+  "claims": [
+    {
+      "claim_id": "jobA-20260727T075315Z-C4",
+      "epoch": "v1",
+      "tag": "ALPHA",
+      "address": {
+        "nodes": [
+          "MU"
+        ],
+        "edges": [
+          "MU__SKHYNIX__hbm_capacity"
+        ],
+        "subgraph": null
+      },
+      "statement": "MU is framed entirely as an HBM-scarcity winner (+349% baked), missing that its majority commodity-DRAM book faces CXMT supply - margin undershoots.",
+      "cited_wall": [
+        {
+          "ticker": "MU",
+          "field": "revenue_estimate.0q.growth",
+          "value": 3.4931,
+          "relation": "deviates_from"
+        }
+      ],
+      "observable": {
+        "metric": "MU GAAP consolidated gross margin, fiscal Q4 FY2026 (earnings release, ~late Sept 2026)",
+        "actual_key": "MU.gross_margin",
+        "source_of_actual": "manual:MU GAAP consolidated gross margin, fiscal Q4 FY2026, from the earnings release (~late Sept 2026)",
+        "comparator": "<=",
+        "threshold": 0.55,
+        "unit": "%",
+        "as_of_date": "2026-10-31"
+      },
+      "fails_if": {
+        "metric": "MU GAAP consolidated gross margin, fiscal Q4 FY2026 (earnings release, ~late Sept 2026)",
+        "actual_key": "MU.gross_margin",
+        "source_of_actual": "manual:MU GAAP consolidated gross margin, fiscal Q4 FY2026, from the earnings release (~late Sept 2026)",
+        "comparator": ">=",
+        "threshold": 0.6,
+        "unit": "%",
+        "as_of_date": "2026-10-31"
+      },
+      "window": [
+        1
+      ],
+      "mode": "job_a_epoch",
+      "created_utc": "2026-07-27T07:53:15Z",
+      "sealed_commit": "00985f4a1922b05b1a5d35b29e787408529abe4f",
+      "disposition": "SEALED-ALPHA",
+      "note": "Day-19c operator disposition SEALED-ALPHA. Observable pinned to MU GAAP consolidated gross margin (fiscal Q4 FY2026 earnings release, ~late Sept); thresholds unchanged (<=0.55 confirms the undershoot / >=0.60 fails). CITED_WALL CAVEAT (honest, do not silently re-cite): the cited field MU.revenue_estimate.0q.growth has the LITERAL wall value 3.4931 (i.e. +349% YoY), which is anomalously high — the same 0q block carries an avg of $50.8B for a single MU quarter (Micron's real quarterly revenue is ~$9B, ~5-6x lower), so the figure looks like a yfinance revenueEstimate artifact, NOT a clean earnings-growth-in-the-revenue-slot swap (eps_estimate.0q.growth is separately 9.3396). The deviates_from relation and the margin-undershoot thesis stand regardless of the precise growth number: read 3.4931 as 'an extreme super-cycle expansion is baked', which the commodity-DRAM/CXMT margin drag will undershoot."
+    },
+    {
+      "claim_id": "jobA-20260727T075315Z-C8",
+      "epoch": "v1",
+      "tag": "CONSENSUS-HOLDS",
+      "address": {
+        "nodes": [
+          "TSM"
+        ],
+        "edges": [
+          "TSM__NVDA__leading_edge_wafers",
+          "TSM__AVGO__foundry_wafers",
+          "TSM__AMD__leading_edge_wafers"
+        ],
+        "subgraph": null
+      },
+      "statement": "TSM leading-edge demand (N3/N2 crowding by NVDA and Google) sustains >=40% YoY monthly revenue growth, confirming the +46% baked - calibration anchor.",
+      "cited_wall": [
+        {
+          "ticker": "TSM",
+          "field": "revenue_estimate.0q.growth",
+          "value": 0.4615,
+          "relation": "agrees_with"
+        }
+      ],
+      "observable": {
+        "metric": "TSM September-2026 monthly revenue print, YoY",
+        "actual_key": "TSM.monthly_revenue_yoy",
+        "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+        "comparator": ">=",
+        "threshold": 0.4,
+        "unit": "%",
+        "as_of_date": "2026-09-15"
+      },
+      "fails_if": {
+        "metric": "TSM September-2026 monthly revenue print, YoY",
+        "actual_key": "TSM.monthly_revenue_yoy",
+        "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+        "comparator": "<",
+        "threshold": 0.35,
+        "unit": "%",
+        "as_of_date": "2026-09-15"
+      },
+      "window": [
+        1
+      ],
+      "mode": "job_a_epoch",
+      "created_utc": "2026-07-27T07:53:15Z",
+      "sealed_commit": "00985f4a1922b05b1a5d35b29e787408529abe4f",
+      "disposition": "SEALED-CALIBRATION",
+      "note": "Originated as an ALPHA-emission; disposition SEALED-CALIBRATION under R-DISPOSITION (first of its tier). Graded on the SHADOW rate only. Observable rebuilt to the TSM September-2026 Taiwan monthly revenue print, YoY (~Sept 10 release): confirms >= +0.40 (holds the +46% consensus, revenue_estimate.0q.growth 0.4615 agrees_with); fails_if < +0.35 = a GENUINE consensus-miss (the calibration value of a consensus-holds claim is that its fails_if is a real miss). as_of 2026-09-15, fast window [1]."
+    }
+  ]
+}

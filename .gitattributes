@@ -1,0 +1,16 @@
+# adf-ledger byte-freeze — git must NEVER rewrite line endings on hashed artifacts.
+#
+# Every sealed claim set, resolution, and pulse in this repo is a HASHED artifact:
+# its recorded SHA-256 (the .sha256 sidecar) and its OpenTimestamps proof (.ots)
+# attest the EXACT bytes. If git flipped LF<->CRLF on checkout, a visitor on a
+# different OS would recompute a different hash and the proof would look broken.
+# These rules keep verification durable across every clone and platform.
+#
+#   -text  = never normalize line endings (store + check out bytes verbatim)
+#   binary = -text -diff (opaque bytes; no diffing, no normalization)
+
+sealed/**       -text
+resolutions/**  -text
+pulses/**       -text
+*.sha256        -text
+*.ots           binary

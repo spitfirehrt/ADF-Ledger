@@ -1,0 +1,56 @@
+{
+  "epoch": "v1",
+  "sealed_utc": "2026-07-26T08:24:11Z",
+  "sealed_date": "2026-07-26",
+  "sealed_against_commit": "95119590b0be61217b1c113a1c294edb592ea53f",
+  "claim_count": 1,
+  "claim_ids": [
+    "TEST-2026-07-26-skeptic-drill-2"
+  ],
+  "claims": [
+    {
+      "claim_id": "TEST-2026-07-26-skeptic-drill-2",
+      "epoch": "v1",
+      "tag": "CONSENSUS-HOLDS",
+      "address": {
+        "nodes": [
+          "NVDA"
+        ],
+        "edges": [],
+        "subgraph": null
+      },
+      "statement": "[TEST #2 - NOT A FORECAST] Second sacrificial claim, re-running the skeptic drill after the seal-hash byte fix. Asserts only that NVDA shares will trade above $1 - absurd by design so it can never be mistaken for a real call. Verifies that seal.py's recorded SHA-256 now equals certutil of the on-disk bytes.",
+      "cited_wall": [
+        {
+          "ticker": "NVDA",
+          "field": "price",
+          "value": 206.84,
+          "relation": "agrees_with",
+          "note": "[TEST] wall price at snapshot; this claim trivially agrees with consensus"
+        }
+      ],
+      "observable": {
+        "metric": "NVDA closing share price",
+        "actual_key": "NVDA.close",
+        "source_of_actual": "yfinance:NVDA:close",
+        "comparator": ">",
+        "threshold": 1.0,
+        "as_of_date": "2026-08-15"
+      },
+      "fails_if": {
+        "metric": "NVDA closing share price",
+        "actual_key": "NVDA.close",
+        "source_of_actual": "yfinance:NVDA:close",
+        "comparator": "<=",
+        "threshold": 1.0,
+        "as_of_date": "2026-08-15"
+      },
+      "window": [
+        1
+      ],
+      "mode": "de_novo",
+      "created_utc": "2026-07-26T06:00:00Z",
+      "sealed_commit": "95119590b0be61217b1c113a1c294edb592ea53f"
+    }
+  ]
+}
