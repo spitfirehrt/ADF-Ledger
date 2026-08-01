@@ -1,0 +1,2 @@
+ADF v1 pulse 2026-08-01 — 9 open claim(s) (8 ALPHA / 1 cal), 1 watch, 3 tracked; board quiet; 0 resolved.
+pulse-sha256 fc20a95c6abaeab5  #ADF
