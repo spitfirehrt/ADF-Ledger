@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-08-06 — W1 escalating T-4d. next checkpoint Aug 10 — Taiwan monthly print.
+pulse-sha256 74aff69a50ce46e1  #ADF $TSM $MU $AMKR $QCOM
+// ---- not part of the post ----
+// body is 149/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
