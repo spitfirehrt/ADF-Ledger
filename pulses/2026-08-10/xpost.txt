@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-08-10 — W1 escalating TODAY. next checkpoint Aug 10 — watch activation test.
+pulse-sha256 0fdeb32e5afb198e  #ADF $TSM $MU $AMKR $QCOM
+// ---- not part of the post ----
+// body is 151/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
