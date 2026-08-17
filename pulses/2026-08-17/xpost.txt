@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-08-17 — no new stress, 9 open. next checkpoint Sep 10 — Taiwan monthly print.
+pulse-sha256 5404935d88679d88  #ADF $TSM $MU $AMKR $QCOM
+// ---- not part of the post ----
+// body is 152/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
