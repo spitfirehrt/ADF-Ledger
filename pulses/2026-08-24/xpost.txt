@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-08-24 — board quiet, 9 open. next checkpoint Sep 10 — Taiwan monthly print.
+pulse-sha256 80e8c7a86ce82a4f  #ADF $TSM $MU $AMKR $QCOM
+// ---- not part of the post ----
+// body is 150/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
