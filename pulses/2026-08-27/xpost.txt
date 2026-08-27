@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-08-27 — 2 active shock(s) @TSM__AAPL__leading_edge_soc. next checkpoint Sep 10 — Taiwan monthly print.
+pulse-sha256 c3a66fcf73b33b8f  #ADF $AAPL $TSM $MU $AMKR
+// ---- not part of the post ----
+// body is 177/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+

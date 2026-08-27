@@ -1,0 +1,550 @@
+{
+  "artifact": "ADF pulse",
+  "epoch": "v1",
+  "run_utc": "2026-08-27T04:08:24Z",
+  "pulse_date": "2026-08-27",
+  "dry_run": false,
+  "spec": "docs/PULSE-PAYLOAD.md (Blueprint v1.14)",
+  "summary": {
+    "open_claims": 9,
+    "alpha": 8,
+    "calibration": 1,
+    "watches": 0,
+    "watches_retired": 0,
+    "tracked": 3,
+    "shocks_active": 2,
+    "shocks_proposed": 2,
+    "resolved_since_last": 0,
+    "assessed": 9,
+    "assessments_flagged": 1,
+    "checkpoints_settled": 0,
+    "board_quiet": false
+  },
+  "sealed": [
+    {
+      "id": "jobA-20260727T075315Z-C8",
+      "tag": "CONSENSUS-HOLDS",
+      "tier": "graded (shadow-rate)",
+      "address": {
+        "nodes": [
+          "TSM"
+        ],
+        "edges": [
+          "TSM__NVDA__leading_edge_wafers",
+          "TSM__AVGO__foundry_wafers",
+          "TSM__AMD__leading_edge_wafers"
+        ]
+      },
+      "observable_summary": "TSM September-2026 monthly revenue print, YoY  [>= +40%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 19,
+      "as_of_date": "2026-09-15",
+      "next_checkpoint": "Taiwan monthly print ~2026-09-10"
+    },
+    {
+      "id": "jobA-20260726T115635Z-C11",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "TSM",
+          "MEDIATEK"
+        ],
+        "edges": []
+      },
+      "observable_summary": "MediaTek September-2026 monthly revenue print, YoY  [>= +5%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 65,
+      "as_of_date": "2026-10-31",
+      "next_checkpoint": "Taiwan monthly print ~2026-09-10"
+    },
+    {
+      "id": "jobA-20260727T075315Z-C4",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "MU"
+        ],
+        "edges": [
+          "MU__SKHYNIX__hbm_capacity"
+        ]
+      },
+      "observable_summary": "MU GAAP consolidated gross margin, fiscal Q4 FY2026 (earnings release, ~late Sept 2026)  [<= 55%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 65,
+      "as_of_date": "2026-10-31",
+      "next_checkpoint": "MU pre-announcement window ~2026-09-10"
+    },
+    {
+      "id": "jobA-20260729T064012Z-C6",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "AMKR"
+        ],
+        "edges": [
+          "AAPL__AMKR__osat_packaging",
+          "AMKR__TSM__adv_packaging_overflow"
+        ]
+      },
+      "observable_summary": "AMKR quarterly revenue YoY growth  [<= +15%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 65,
+      "as_of_date": "2026-10-31",
+      "next_checkpoint": "Taiwan monthly print ~2026-09-10"
+    },
+    {
+      "id": "QCOM-septq-rev-yoy-2026",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "QCOM"
+        ],
+        "edges": [
+          "SAMSUNG__QCOM__handset_socs",
+          "AAPL__QCOM__handset_modems"
+        ]
+      },
+      "observable_summary": "QCOM FY2026 Sept-quarter (fiscal Q4) revenue YoY growth  [> -6.68%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 80,
+      "as_of_date": "2026-11-15",
+      "next_checkpoint": "Samsung Q3 preliminary guidance ~2026-10-08"
+    },
+    {
+      "id": "jobA-20260729T064012Z-C5",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "KLA"
+        ],
+        "edges": [
+          "TSM__KLA__process_control"
+        ]
+      },
+      "observable_summary": "KLA September-2026 quarter revenue YoY growth (FY2027 Q1, quarter ending 2026-09-30)  [>= +15%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 80,
+      "as_of_date": "2026-11-15",
+      "next_checkpoint": "Taiwan monthly print ~2026-09-10"
+    },
+    {
+      "id": "jobA-20260726T115635Z-C4",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "LRCX",
+          "ASX"
+        ],
+        "edges": []
+      },
+      "observable_summary": "LRCX latest-quarter revenue YoY growth (beats the cited +29% consensus)  [>= +31%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 95,
+      "as_of_date": "2026-11-30",
+      "next_checkpoint": "Taiwan monthly print ~2026-09-10"
+    },
+    {
+      "id": "HBM-zerosum-skhynix-spread-2026",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "MU",
+          "SKHYNIX",
+          "SAMSUNG"
+        ],
+        "edges": [
+          "MU__SKHYNIX__hbm_capacity",
+          "SKHYNIX__NVDA__hbm",
+          "SAMSUNG__NVDA__hbm"
+        ]
+      },
+      "observable_summary": "SKHYNIX total return minus mean total return of {MU, SAMSUNG}, seal date to 2026-12-31  [<= -10%]",
+      "window": [
+        2
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 126,
+      "as_of_date": "2026-12-31",
+      "next_checkpoint": "MU pre-announcement window ~2026-09-10"
+    },
+    {
+      "id": "AVGO-wafer-hike-multiple-2027",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "AVGO",
+          "TSM"
+        ],
+        "edges": [
+          "TSM__AVGO__foundry_wafers"
+        ]
+      },
+      "observable_summary": "AVGO share price (multiple/margin compression)  [<= $480]",
+      "window": [
+        2
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 157,
+      "as_of_date": "2027-01-31",
+      "next_checkpoint": "Taiwan monthly print ~2026-09-10"
+    }
+  ],
+  "watch": [],
+  "watch_retired": [],
+  "tracked": [
+    {
+      "id": "jobA-20260727T075315Z-C5",
+      "title": "Equipment cluster priced idiosyncratically strong_buy but is one correlated 2Q-lagged capex bet."
+    },
+    {
+      "id": "jobA-20260727T075315Z-C6",
+      "title": "AAPL inverted target reads ex-growth, missing a TSM-locked refresh + Broadcom content lock (frame inversion)."
+    },
+    {
+      "id": "jobA-20260729T064012Z-C12",
+      "title": "AAPL priced ex-growth (PT 318.8 < price 333, only large-cap set to fall); an M5 Mac/iPhone hardware upcycle on TSM N2 sole-source plus refreshed Broadcom connectivity content."
+    }
+  ],
+  "assessment": {
+    "assessment_schema": "1",
+    "label": "machine assessment — the sealed claim is unchanged",
+    "model": "x-ai/grok-4.5",
+    "prompt_id": "job-b-assess-v1.1",
+    "graded": false,
+    "not_assessed": [],
+    "by_claim": {
+      "jobA-20260726T115635Z-C11": {
+        "pressure": "quiet",
+        "confidence": 26,
+        "case": "Window items cover Apple M6/M5 Ultra on TSM and AMD packaging spend with TSM; nothing tags MEDIATEK revenue or a TSM-MEDIATEK foundry link, so the September YoY print is unmoved.",
+        "adf_shallow": {
+          "consensus": "Street holds MEDIATEK 0q revenue growth near -2.45% with no wired TSM leading-edge edge.",
+          "deviation_status": "UNCHANGED — no MediaTek monthly-revenue or foundry-allocation evidence this window.",
+          "synthesis": "Do not act; treat the edge as unproven and wait for the October monthly print."
+        },
+        "confidence_note": "Prior 26 held; no MEDIATEK-tagged item arrived to move the observable off the wall.",
+        "evidence": [],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 26,
+        "confidence_delta": 0
+      },
+      "jobA-20260726T115635Z-C4": {
+        "pressure": "quiet",
+        "confidence": 30,
+        "case": "LRCX Oregon R&D lab groundbreakings and an ASE facility-engineering contract sit on isolated nodes; no LRCX→ASX advanced-packaging equipment shipment or design-win appears.",
+        "adf_shallow": {
+          "consensus": "LRCX 0q revenue growth ~52.8% / cited ~29% with ASX unwired to LRCX.",
+          "deviation_status": "UNCHANGED — capex headlines do not create the missing supply edge or move LRCX YoY vs 31%.",
+          "synthesis": "Observable stays at consensus until a shipment or design-win link appears; no action."
+        },
+        "confidence_note": "Prior 30 held; Oregon spend and ASE contract are not transmission on the claimed edge.",
+        "evidence": [],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 30,
+        "confidence_delta": 0
+      },
+      "AVGO-wafer-hike-multiple-2027": {
+        "pressure": "falling",
+        "confidence": 28,
+        "case": "NVDA blowout and Apple 2nm M6/M5 Ultra plus AMD $10B TSM packaging reinforce AI-demand bid on TSM wafers; no explicit 2027 wafer-price hike lands on TSM__AVGO__foundry_wafers, so AVGO multiple stays supported above the ≤480 path.",
+        "adf_shallow": {
+          "consensus": "AVGO strong_buy, target ~526, price 355 with AI-demand strictly positive on foundry customers.",
+          "deviation_status": "WEAKENING — demand-side evidence dominates; cost-shock leg still absent.",
+          "synthesis": "Price under 480 but size down the short-multiple until an explicit 2027 wafer hike prints; AI bid fights the thesis."
+        },
+        "confidence_note": "Prior 31 trimmed; NVDA/Apple/AMD demand items raise the bar for margin-compression without a hike print.",
+        "evidence": [
+          "CBMiakFVX3lxTE1BWEhVNnVLZHo3MkhxN0VZaWxpLTFjUGNEUV9EUnlJLVZCSlpRYldzTDNLcVNxNlR5YXR0c2tSdFRyZ1ZoM0Uza1ptcHA2cWJRNEdYUG9POG9aQk96MllkMTkxbWdITnlvVGc",
+          "CBMiuAFBVV95cUxNaFNZWnlDMmx2VlBtaFlBWTAyS1g1cWk2SF8wM2phRU95eWpJT2hoM1RtMGVDOUJmNmI0N1RNQzBnblhQVjdFcHl4RVZNVzg1YVZEbTMycVpxdkpTcmNGODIzcmxxRzRnOEJ5Qkg0OG1QVDZaYy1sdUoxLTJJbWUzbEZFcmhzMVlQUXB4OEJBWGhrY2d5aWhXYzNaOElRdlZzdktUdGc1ZTJvcGRUWVc0X2RJTk5GUi1x",
+          "CBMifkFVX3lxTE9DbFpNdHZxX3NDZnlubGl1TzBSWFVBU3ZzLXh1YkhWN09ZWk50QjhBRlE2RXl6OHg4OFVuWWkyQS02Si1xeFVXM2RxUWhtMWIwSUFhR0c5WFVzeC04cl9uNkhLRmw0UEs5amdtMlZzVEdqNkc3dkJhbUZrT3h6UQ"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 31,
+        "confidence_delta": -3
+      },
+      "HBM-zerosum-skhynix-spread-2026": {
+        "pressure": "falling",
+        "confidence": 14,
+        "case": "Micron CEO scarcity-to-2028 and $22B customer prepay plus NVDA 70% growth and HBM price +50% 2027 lift the whole HBM pool along SKHYNIX__NVDA__hbm / MU__NVDA__hbm / SAMSUNG__NVDA__hbm; MU__SKHYNIX__hbm_capacity zero-sum does not yet force SKHYNIX underperformance vs MU/SAMSUNG.",
+        "adf_shallow": {
+          "consensus": "Memory cluster uniformly strong-buy with outsized targets (MU/SKHYNIX/SAMSUNG all scarcity winners).",
+          "deviation_status": "WEAKENING — rising-tide scarcity and NVDA demand dominate; no allocation share print for the spread.",
+          "synthesis": "Do not fade SKHYNIX on the spread; scarcity is still a rising tide until an allocation or qualification share print appears."
+        },
+        "confidence_note": "Prior 16 edged down; MU crunch alarm and NVDA HBM-tagged beat reinforce co-movement over zero-sum.",
+        "evidence": [
+          "CBMijgFBVV95cUxNOGFTRllod0IyeWpadWxqV1V1ZTBDSUI5VVdCOVd5cmxmeUt2ZFNyNUx5QU1zTWVOclNkUlNsMmNhSjk1UUlHRjBTTHNaamhSZkFSM2V2enNFckxzUmh2eXRMR2pzY0h3X0tSVkpkN3o2X0R4Y3Fkb1J6bFg3aUV2eHloN3FDa0dyTmtTbW9B",
+          "CBMi7gFBVV95cUxPb0FtSGVyMzNEMlk3ejRBYWVleGVOQk5UNUhvYlpESHV3c2owNzZ1aEExcGQ0NFpUQ2dGUDhiUFZzWUNNck9ENjlzb1dTVTByTDNhT0RGeVRueTNiRmtzRE1UMmFHN1JqZkJDSkI0YkN5SUZSU0VjR2hnYXhEU0R1YUdhNEhkdG5VbWJWTWk4SUdSeW9wMXhlMFBoT0RNRnAzck9ZZ0NCeUxzdlUxM2JaYUpHbmQ4STIzSGp6ZUFVZmZCU3VEM3B1ZXVzQUlFVTNCZWVrUkhITVVTQU8xOVNkYXNJNlBxLV8zcVdXYlZB",
+          "CBMi3wFBVV95cUxPakp4UVJ2RHE2V2NJMGFsTXNKZnJUTWlyNTVvTXBHZHpJQmlrRldfOU53RURGTkh4RUdWWk1HNnJqU2Q4OHBXODVBQklQWDQ0OV90RW1ZQzU4Q1dsUjRUWmtkV0Y5M29xMXBnNjUxVURYcHRWOGUzaTBmcVAyTHltUzItTjhOUzBoYUJPajB4VFBXNHRUNFFxN2k4V1JlVUtwQk1sS1pKVzl1R0hEeTd5c0txZ2l6MDNoNTVMOXJqa3JSZm5yUUlhazlxdlRxNmdEN0RBd0NLZFkzWUJaejV3",
+          "CBMikAFBVV95cUxNT0xSZ1lFTzBteDlNdnJJUlpwU2pLTVBhRTk5ZDl5ME9RQUVlSzZRSDBYREh1TEFxM0dWb1lwb3lfdDZQd3Q4RzRNS01mRkU0a1ZGWnNvdEFvdFZ6VGx5NG1FcFFqNnh6dUpwRmVra1dYY2NVWmxDcVNfTmh5UEFVcU1ER21vZ2JsZnN2cjRGN1o"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 16,
+        "confidence_delta": -2
+      },
+      "QCOM-septq-rev-yoy-2026": {
+        "pressure": "falling",
+        "confidence": 38,
+        "case": "Samsung Exynos 2700 outperforming the Snapdragon slated for Galaxy S27 Ultra hits SAMSUNG__QCOM__handset_socs; Xiaomi in-house Xring O3 challenges QCOM/MEDIATEK; 5GHz Oryon teases do not offset the SoC-win leg into the Sept-q YoY.",
+        "adf_shallow": {
+          "consensus": "QCOM hold, 0q rev growth ~-10% framed as structural modem/SoC share loss.",
+          "deviation_status": "WEAKENING — Exynos-outperform and OEM in-house chips cut the Samsung-offset case.",
+          "synthesis": "Stay sidelined into the print; Exynos headlines hurt the Samsung-offset case more than S27 teases help."
+        },
+        "confidence_note": "Prior 42 cut on Exynos-vs-Snapdragon and Xiaomi Xring items without a confirming Samsung flagship SoC win.",
+        "evidence": [
+          "CBMiggFBVV95cUxOdEwxVkFJZzlGN3czMkdOd1d5UTFhVGhYN1lmNHZYNmZMYnhhSnlValZFYnh5ZGpzMndwdzRuMUhPNUtudDZqdXh6MUY1aEprdmJEQU1JTDM0NFVPM0N6ZWhaQkQ5cmRKNjhjVVIyN01TbklBNldhNnhyczhIRzQtanFR",
+          "CBMiwgFBVV95cUxQTDVfX3dPTTNCZ1VhWGJfVGw1cGRyZnZucHR4dFJNR25oRElMbEllc0VSaXh5b01aUHY0aUo0b3pxWmQtV0Ryc1VKc0xWOWVTWnB3b2JMelZ2QWItUThxREVYUW42UTdxY3VDZHdQMXVkMHdSUW9SdXE2ZVFfQ1pRV2JiLU84Zzlya2JWSW9qRlVfZXZBc0tYWjlEdEIwaUpWQnczSGh2X3BndzBhNnR0Zm9WVEhsYnJBd19fOTRKUWw4Zw",
+          "CBMidkFVX3lxTE14aTRoQ05oMlJTemtjUzcxRE9aMVJYcVpvemlGcGxsTzJsRnNBTUx0TEJvU1dCTlJMMjgzTmpucFRqNEVFNWFobVI5ODlDWV82ZmNBc3FqR1BuOUxXQUJyem8zWlFQUmhGT2huLTVlRUxkcXpyVXc"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 42,
+        "confidence_delta": -4
+      },
+      "jobA-20260727T075315Z-C4": {
+        "pressure": "falling",
+        "confidence": 10,
+        "case": "Micron CEO supply-not-catching-until-2028, customers putting up $22B, data-centers wanting 50% more than shippable, and $50B revenue guide all travel MU__NVDA__hbm / MU__SKHYNIX__hbm_capacity as HBM-scarcity margin support — opposite the commodity-DRAM/CXMT undershoot to GM ≤55%.",
+        "adf_shallow": {
+          "consensus": "MU strong_buy with ~349% 0q revenue growth baked as pure HBM-scarcity winner.",
+          "deviation_status": "WEAKENING — every MU item this window reinforces scarcity pricing power, not CXMT commodity pressure.",
+          "synthesis": "Q4 GM ≤55% remains a low-probability tail; stand down until a commodity-DRAM ASP or CXMT-share print appears."
+        },
+        "confidence_note": "Prior 13 cut further; $22B prepay and 2028 crunch alarm make the ≤55% GM path less likely.",
+        "evidence": [
+          "CBMijgFBVV95cUxNOGFTRllod0IyeWpadWxqV1V1ZTBDSUI5VVdCOVd5cmxmeUt2ZFNyNUx5QU1zTWVOclNkUlNsMmNhSjk1UUlHRjBTTHNaamhSZkFSM2V2enNFckxzUmh2eXRMR2pzY0h3X0tSVkpkN3o2X0R4Y3Fkb1J6bFg3aUV2eHloN3FDa0dyTmtTbW9B",
+          "CBMi7gFBVV95cUxPb0FtSGVyMzNEMlk3ejRBYWVleGVOQk5UNUhvYlpESHV3c2owNzZ1aEExcGQ0NFpUQ2dGUDhiUFZzWUNNck9ENjlzb1dTVTByTDNhT0RGeVRueTNiRmtzRE1UMmFHN1JqZkJDSkI0YkN5SUZSU0VjR2hnYXhEU0R1YUdhNEhkdG5VbWJWTWk4SUdSeW9wMXhlMFBoT0RNRnAzck9ZZ0NCeUxzdlUxM2JaYUpHbmQ4STIzSGp6ZUFVZmZCU3VEM3B1ZXVzQUlFVTNCZWVrUkhITVVTQU8xOVNkYXNJNlBxLV8zcVdXYlZB",
+          "CBMitAFBVV95cUxOVW44UW9zZ0wyM0k4VzA1ZTJDaTBDWnZUSjl5dWdfSl9Na1p5bzBQdUstYk5nUlRsZDRsbnZDb0o5UWhaTlVJV2hRUUpQZnZ6b1dGRGxxOUVQbGZpekRyaG85T3FqNkNKdVplX3RPaTF3eGRXNEJJRUtLbGxmdEt4eEFERjRHbXA0MXdEdUdZdXZpV3dBY0lad1pHUXZzOU1URWE2aTgtRkFLVTdEeW5JQmhWR24"
+        ],
+        "flagged": true,
+        "alerts": [
+          {
+            "kind": "low_confidence",
+            "detail": "confidence 10% <= 10%"
+          }
+        ],
+        "graded": false,
+        "prior_confidence": 13,
+        "confidence_delta": -3
+      },
+      "jobA-20260727T075315Z-C8": {
+        "pressure": "rising",
+        "confidence": 88,
+        "case": "NVDA Q2 revenue double to ~$96B, 70% FY2028 growth forecast, and AWS +2M GPU order travel TSM__NVDA__leading_edge_wafers as sustained N3/N2 crowding into the September monthly YoY ≥40% print.",
+        "adf_shallow": {
+          "consensus": "TSM strong_buy with ~47% 0q revenue growth already baked as AI foundry anchor.",
+          "deviation_status": "STRENGTHENING — NVDA beat-and-raise plus multi-year GPU add directly gates TSM leading-edge wafers.",
+          "synthesis": "Base case remains September YoY ≥40%; hold as the book’s calibration anchor."
+        },
+        "confidence_note": "Prior 85 lifted on NVDA $96B / 70% growth / AWS 2M GPU evidence tightening the TSM demand path.",
+        "evidence": [
+          "CBMiakFVX3lxTE1BWEhVNnVLZHo3MkhxN0VZaWxpLTFjUGNEUV9EUnlJLVZCSlpRYldzTDNLcVNxNlR5YXR0c2tSdFRyZ1ZoM0Uza1ptcHA2cWJRNEdYUG9POG9aQk96MllkMTkxbWdITnlvVGc",
+          "CBMi4wFBVV95cUxNZUNocGNzT2FJb01QNmVWTHpoSXkxUUNVdlRDTVZET3hZZVBDN0JGTVBTUFF5aEdERTJOcU9LeV9VMW12ZlZSck5uQ194MjFmYVlMWGt1SzdVODFjY2hkV2RFamlFdzVaWkNYNUdnbXcxbF9rTGJwY005LTlwN1BtUDdTWDVaMk1kejdPRzJKaVRTUVB4X3FWVnVlNnNPcUxUZGNHSzNTV0liVVJaNTMwdEdYcENaOFVtZVc5TXFIY0xsUlZJZUg2bkJKVnJ2OUhqSVg3bDZrQTd3eWdTVmNvMlJkcw"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 85,
+        "confidence_delta": 3
+      },
+      "jobA-20260729T064012Z-C5": {
+        "pressure": "rising",
+        "confidence": 72,
+        "case": "KLA items on advanced-nodes/HBM/packaging gains and earnings beat/backlog, plus TSM strong Q2 tagged to TSM__KLA__process_control, support September-q YoY ≥15% on the N2/process-control tailwind.",
+        "adf_shallow": {
+          "consensus": "KLA buy with ~13.5–26% 0q growth — lowest upside/rating in the equipment group.",
+          "deviation_status": "STRENGTHENING — beat/backlog plus TSM process-control tag keep the ≥15% path intact; rating gap is the alpha.",
+          "synthesis": "Sept-q ≥15% remains base case; the relative-rating gap is the alpha, not the growth print itself."
+        },
+        "confidence_note": "Prior 70 nudged up on KLA beat/backlog and TSM-tagged process-control items with no contrary miss.",
+        "evidence": [
+          "CBMihAFBVV95cUxQNzllaV9VbTFPN2lOV2tvRThsWGdDVVUwRzNQbzNpNnlnZHNRNGRONm1CaXVrUEdwejJya294V1JVRXRSODRVc243QWtCSG5vYURHQ3NaUE5EZlBvbkFKSng4ZldCbkt3blVhXzg1WVdOSjV0MGp1R0dDRVJvVkdzUV9EaFU",
+          "CBMi0wFBVV95cUxQalZHWS04SHpPZmRyODJYT0pIQVRmcDNLT2Qyd29KeUg0M1JlNWVrRGd4a1U1OHA4VUdBN1pXZ2EzM3RSNnFmcWZXX2w5MnBHLTAtWjNudUhPMkhlT3JXSUJTWkwxVm9QSG10djVmSk1QYWRPcWttcDVodldKREloRGNidVIzV01vQ21fQmRsaHd0VkI0MmN0NUx2WWpmLXFXX240cTlqN1RMQVBZYXpoemZMaHplMFIwYmJIU1ZUdDltbmV2SkFQUUNrbW16aV9ERWJB",
+          "CBMiZkFVX3lxTFBCNnl2aGZVWHcyRDE5LS1odE9ZQVhSM1VxcVZ5R3NNUTctdU54VHBudDFOYnJiM3FOQ2lxZXVxM2pDRjViQzVpLUktSnNJRXlfaWttQTFrNTBpcG5Za05lWkxjQWNzUQ"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 70,
+        "confidence_delta": 2
+      },
+      "jobA-20260729T064012Z-C6": {
+        "pressure": "rising",
+        "confidence": 42,
+        "case": "AMKR -4.7% vs OSAT peers and softer near-term outlook headlines, with TSMC packaging-shift only latent on AMKR__TSM__adv_packaging_overflow, keep the Apple-mix cap on AI upside and the ≤15% YoY path in base case.",
+        "adf_shallow": {
+          "consensus": "AMKR framed as CoWoS-overflow AI packaging with ~20% 0q growth baked.",
+          "deviation_status": "STRENGTHENING — price divergence and soft-outlook items confirm consumer-packaging dominance over overflow upside.",
+          "synthesis": "Miss-and-crash moves the ≤15% path into base case; lean into the claim on the next mix print rather than fade it."
+        },
+        "confidence_note": "Prior 38 raised on AMKR peer-relative selloff and soft-outlook items without a live overflow volume print.",
+        "evidence": [
+          "price_anomaly:AMKR:2026-08-25",
+          "CBMiqAFBVV95cUxQeFZVcDJqcHJGczJtb3FEVGM5dk9UcEVQX1YwLU16VDRyTmJoU1hpc0pIM1V5Q2c0ZXNudl9WeVByeTlwMi0wYm9DYUdYcVlPSUM5QVdwdFRYN3lhRjJiRVViNmo3dml4ZFBkVEp0bHNDbG5KZ29ld0g5U0tEUmpwWHI5QjROcnM1dFJlcmNaWmhBckE2aTc1M1RVQXJ2NlJ2dDRfRGZSUEE",
+          "CBMihgFBVV95cUxNLXhDWEMzc0kyQXE3R1o2WEtWc2taeXZQRWQtamJhdm42elI5VThLOURmRlRtMm12QVFiRHhSUlh1MVRKVEh1TDdxdGd1ZDluejFxd0lOYS0yQVluQ0p6QURhak9PeTRfNXFTZEgzTkxLbUVZWmt1N1BsdVRYdDhuT2tBT0N6dw"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 38,
+        "confidence_delta": 4
+      }
+    },
+    "wall_provenance": {
+      "epoch": "v1",
+      "before_utc": "2026-08-24T07:46:36Z",
+      "after_utc": "2026-08-27T06:10:09Z",
+      "refreshed": true,
+      "status": "REFRESHED",
+      "age_hours": -0.0,
+      "stale": false,
+      "stale_threshold_hours": 120,
+      "note": "",
+      "firewall_role": "LIVE-TRACKING"
+    }
+  },
+  "checkpoint_outcomes": [],
+  "shocks": {
+    "active_or_approved": [
+      {
+        "shock_id": "SHK-TSM__AAPL__leading_edge_soc",
+        "origin": "TSM__AAPL__leading_edge_soc",
+        "direction": "+",
+        "status": "active"
+      },
+      {
+        "shock_id": "SHK-AAPL",
+        "origin": "AAPL",
+        "direction": "+",
+        "status": "active"
+      }
+    ],
+    "proposed": [
+      {
+        "origin": "TSM__AAPL__leading_edge_soc",
+        "direction": "+",
+        "abs_stress": 29.9069
+      },
+      {
+        "origin": "AAPL",
+        "direction": "+",
+        "abs_stress": 29.7586
+      }
+    ],
+    "propagation_rows": [
+      {
+        "name": "AVGO",
+        "impact": 0.2565,
+        "lands_quarter": 1,
+        "path": "TSM__AVGO__foundry_wafers"
+      },
+      {
+        "name": "AMD",
+        "impact": 0.204,
+        "lands_quarter": 0,
+        "path": "TSM__AMD__leading_edge_wafers"
+      },
+      {
+        "name": "NVDA",
+        "impact": 0.204,
+        "lands_quarter": 0,
+        "path": "TSM__NVDA__leading_edge_wafers"
+      },
+      {
+        "name": "AMKR",
+        "impact": 0.08046,
+        "lands_quarter": 1,
+        "path": "AAPL__AMKR__osat_packaging"
+      },
+      {
+        "name": "ASML",
+        "impact": 0.0612,
+        "lands_quarter": 2,
+        "path": "ASML__TSM__euv_systems"
+      },
+      {
+        "name": "KLA",
+        "impact": 0.0513,
+        "lands_quarter": 2,
+        "path": "TSM__KLA__process_control"
+      },
+      {
+        "name": "AMKR",
+        "impact": 0.08046,
+        "lands_quarter": 1,
+        "path": "AAPL__AMKR__osat_packaging"
+      },
+      {
+        "name": "TSM",
+        "impact": 0.0408,
+        "lands_quarter": 0,
+        "path": "TSM__AAPL__leading_edge_soc"
+      },
+      {
+        "name": "AVGO",
+        "impact": 0.036,
+        "lands_quarter": 1,
+        "path": "AVGO__AAPL__wireless_content"
+      },
+      {
+        "name": "QCOM",
+        "impact": 0.0255,
+        "lands_quarter": 1,
+        "path": "AAPL__QCOM__handset_modems"
+      },
+      {
+        "name": "AVGO",
+        "impact": 0.017442,
+        "lands_quarter": 1,
+        "path": "TSM__AAPL__leading_edge_soc → TSM__AVGO__foundry_wafers"
+      },
+      {
+        "name": "AMD",
+        "impact": 0.013872,
+        "lands_quarter": 0,
+        "path": "TSM__AAPL__leading_edge_soc → TSM__AMD__leading_edge_wafers"
+      }
+    ],
+    "board_quiet": false
+  },
+  "resolutions": []
+}
