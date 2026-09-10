@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-09-10 — 3 active shock(s) @AAPL. next checkpoint Sep 24 — MU fiscal-Q4 FY26 earnings.
+pulse-sha256 ce6c38865c00f745  #ADF $AAPL $TSM $MU $AMKR
+// ---- not part of the post ----
+// body is 160/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
