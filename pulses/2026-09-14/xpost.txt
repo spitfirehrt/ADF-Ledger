@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-09-14 — 7 active shock(s) @ASML. next checkpoint Sep 24 — MU fiscal-Q4 FY26 earnings.
+pulse-sha256 7ada2273202d1017  #ADF $ASML $INTC $AAPL $TSM
+// ---- not part of the post ----
+// body is 162/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
