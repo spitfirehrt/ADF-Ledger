@@ -1,0 +1,13 @@
+{
+  "claim_id": "jobA-20260727T075315Z-C8",
+  "epoch": "v1",
+  "fetched_utc": "2026-09-15T06:31:07Z",
+  "actuals": {
+    "TSM.monthly_revenue_yoy": {
+      "value": 0.5332,
+      "source": "manual:jobA-20260727T075315Z-C8_manual.json",
+      "fetched_utc": "2026-09-15T06:31:07Z",
+      "note": null
+    }
+  }
+}

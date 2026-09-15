@@ -1,0 +1,51 @@
+{
+  "claim_id": "jobA-20260727T075315Z-C8",
+  "epoch": "v1",
+  "tag": "CONSENSUS-HOLDS",
+  "address": {
+    "nodes": [
+      "TSM"
+    ],
+    "edges": [
+      "TSM__NVDA__leading_edge_wafers",
+      "TSM__AVGO__foundry_wafers",
+      "TSM__AMD__leading_edge_wafers"
+    ],
+    "subgraph": null
+  },
+  "statement": "TSM leading-edge demand (N3/N2 crowding by NVDA and Google) sustains >=40% YoY monthly revenue growth, confirming the +46% baked - calibration anchor.",
+  "cited_wall": [
+    {
+      "ticker": "TSM",
+      "field": "revenue_estimate.0q.growth",
+      "value": 0.4615,
+      "relation": "agrees_with"
+    }
+  ],
+  "observable": {
+    "metric": "TSM September-2026 monthly revenue print, YoY",
+    "actual_key": "TSM.monthly_revenue_yoy",
+    "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+    "comparator": ">=",
+    "threshold": 0.4,
+    "unit": "%",
+    "as_of_date": "2026-09-15"
+  },
+  "fails_if": {
+    "metric": "TSM September-2026 monthly revenue print, YoY",
+    "actual_key": "TSM.monthly_revenue_yoy",
+    "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+    "comparator": "<",
+    "threshold": 0.35,
+    "unit": "%",
+    "as_of_date": "2026-09-15"
+  },
+  "window": [
+    1
+  ],
+  "mode": "job_a_epoch",
+  "created_utc": "2026-07-27T07:53:15Z",
+  "sealed_commit": "00985f4a1922b05b1a5d35b29e787408529abe4f",
+  "disposition": "SEALED-CALIBRATION",
+  "note": "Originated as an ALPHA-emission; disposition SEALED-CALIBRATION under R-DISPOSITION (first of its tier). Graded on the SHADOW rate only. Observable rebuilt to the TSM September-2026 Taiwan monthly revenue print, YoY (~Sept 10 release): confirms >= +0.40 (holds the +46% consensus, revenue_estimate.0q.growth 0.4615 agrees_with); fails_if < +0.35 = a GENUINE consensus-miss (the calibration value of a consensus-holds claim is that its fails_if is a real miss). as_of 2026-09-15, fast window [1]."
+}

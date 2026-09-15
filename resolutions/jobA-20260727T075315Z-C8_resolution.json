@@ -1,0 +1,150 @@
+{
+  "claim_id": "jobA-20260727T075315Z-C8",
+  "epoch": "v1",
+  "verdict": "CONFIRM",
+  "reason": "observable met",
+  "notes": [],
+  "evaluated_utc": "2026-09-15T06:31:07Z",
+  "sealed_commit": "00985f4a1922b05b1a5d35b29e787408529abe4f",
+  "observable_eval": {
+    "actual_key": "TSM.monthly_revenue_yoy",
+    "actual_value": 0.5332,
+    "comparator": ">=",
+    "threshold": 0.4,
+    "result": true
+  },
+  "fails_if_eval": {
+    "actual_key": "TSM.monthly_revenue_yoy",
+    "actual_value": 0.5332,
+    "comparator": "<",
+    "threshold": 0.35,
+    "result": false
+  },
+  "actuals_ref": "jobA-20260727T075315Z-C8_actuals.json",
+  "as_of_date": "2026-09-15",
+  "graded_period": {
+    "observable": {
+      "actual_key": "TSM.monthly_revenue_yoy",
+      "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+      "period_graded": "operator-entered value for the period named in the source text, as of 2026-09-15",
+      "prior_period": null,
+      "pinned": true,
+      "detail": "manual:jobA-20260727T075315Z-C8_manual.json"
+    },
+    "fails_if": {
+      "actual_key": "TSM.monthly_revenue_yoy",
+      "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+      "period_graded": "operator-entered value for the period named in the source text, as of 2026-09-15",
+      "prior_period": null,
+      "pinned": true,
+      "detail": "manual:jobA-20260727T075315Z-C8_manual.json"
+    }
+  },
+  "preflight": {
+    "claim_id": "jobA-20260727T075315Z-C8",
+    "ledger": "live",
+    "as_of_date": "2026-09-15",
+    "metric": "TSM September-2026 monthly revenue print, YoY",
+    "verdict": "READY",
+    "reasons": [],
+    "observable": {
+      "actual_key": "TSM.monthly_revenue_yoy",
+      "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+      "period_pinned": {
+        "state": "OPERATOR-PINNED",
+        "period": null,
+        "why": "a manual route — the period IS named in the source text (checked, not assumed) and the operator enters the figure; no automatic period can drift"
+      },
+      "data_exists": {
+        "state": "AVAILABLE",
+        "why": "operator-entered in jobA-20260727T075315Z-C8_manual.json"
+      },
+      "kind_matches": {
+        "state": "OK",
+        "why": "source kind not assertable vs RATIO metric; fetched 0.5332 — consistent"
+      },
+      "value": 0.5332,
+      "state": "READY"
+    },
+    "fails_if": {
+      "actual_key": "TSM.monthly_revenue_yoy",
+      "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+      "period_pinned": {
+        "state": "OPERATOR-PINNED",
+        "period": null,
+        "why": "a manual route — the period IS named in the source text (checked, not assumed) and the operator enters the figure; no automatic period can drift"
+      },
+      "data_exists": {
+        "state": "AVAILABLE",
+        "why": "operator-entered in jobA-20260727T075315Z-C8_manual.json"
+      },
+      "kind_matches": {
+        "state": "OK",
+        "why": "source kind not assertable vs RATIO metric; fetched 0.5332 — consistent"
+      },
+      "value": 0.5332,
+      "state": "READY"
+    },
+    "grading_basis": {
+      "state": "SPECIFIED",
+      "why": "TSMC net revenue for AUGUST 2026, YoY vs August 2025 · period 2026-08 · TWD · Taiwan Stock Exchange Market Observation Post System (MOPS), monthly revenue announcement table [yoy_pct (the month's YoY revenue growth, column 7 of the MOPS row)] · 2 stated limitation(s)",
+      "manual_route": true,
+      "basis": {
+        "route": "manual",
+        "operator_confirmation_required": false,
+        "period": {
+          "resolved": "2026-08",
+          "measured": "TSMC net revenue for AUGUST 2026, YoY vs August 2025",
+          "rule": "the print RELEASED on the date the source text names (~2026-09-10). A Taiwan issuer announces month M's revenue by the 10th of month M+1, so the print released 2026-09-10 carries AUGUST 2026 revenue.",
+          "rejected_reading": "'September-2026' read as the revenue MONTH (September revenue, released ~2026-10-10)",
+          "evidence": [
+            "FEASIBILITY (decisive): as_of_date is 2026-09-15. September-2026 revenue does not publish until ~2026-10-10, 25 days AFTER the claim's own resolution date. The rejected reading makes the claim structurally ungradable at the date it names; the adopted reading grades with 5 days to spare.",
+            "THE CLAIM'S OWN WORDS: both source_of_actual and the operator's seal note say '~Sept 10 2026 release'. The 2026-09-10 print is the August figure. Only the adopted reading makes the phrase and the release date agree.",
+            "THE LADDER: run_job_a._next_taiwan_prints('2026-07-27') returns ['2026-08-10','2026-09-10'] and R-WINDOW-MIX instructed the generator to 'set such a claim's as_of_date to just AFTER one of those prints'. as_of 2026-09-15 anchors to the 2026-09-10 RELEASE date — re-verified by running the helper this session.",
+            "THE CONTROL: sibling claim jobA-20260726T115635Z-C11 uses the same phrase for the OTHER reading and says so — '(~Oct 10 release)', as_of 2026-10-31. Each claim's own release date settles its own reading; the phrase alone never does."
+          ]
+        },
+        "currency": {
+          "code": "TWD",
+          "immune": false,
+          "basis": "New Taiwan Dollars, on BOTH sides. The threshold (0.40) anchors to cited wall TSM.revenue_estimate.0q.growth = 0.4615, which is an NT$ growth rate; the actual is the NT$ YoY the MOPS table publishes.",
+          "evidence": "CONFIRMED by arithmetic against live MOPS data, 2026-08-11: the wall's TSM 0q revenue avg is 1,446,809,608,550 with growth 0.46150002, implying a year-ago quarter of 989,948,401,472. TSMC's Q3-2025 revenue summed from the MOPS monthly tables (ROC 114 months 7/8/9: 323,165,707 + 335,771,691 + 330,980,920 NT$ thousands) is NT$989,918,318,000. Ratio implied/actual = 1.000030 — a match to 3 parts in 100,000. A USD reading is off by a factor of ~30 and would imply a single quarter of $1.45 TRILLION.",
+          "trap_noted": "The wall entry's top-level `currency` field reads 'USD' and its price is the NYSE ADR price (403.41). That field describes the PRICE, not the revenue estimate. Reading it as the estimate's currency — and therefore grading against a USD-terms YoY — would have introduced an FX error into the first resolution this record ever publishes. eps_estimate in the same entry IS USD-per-ADR (0q yearAgoEps 2.92), so a single wall entry legitimately carries three currencies at once."
+        },
+        "source": {
+          "name": "Taiwan Stock Exchange Market Observation Post System (MOPS), monthly revenue announcement table",
+          "url": "https://mopsov.twse.com.tw/nas/t21/sii/t21sc03_115_8_0.html",
+          "url_rule": "t21sc03_<ROC year>_<month>_0.html, ROC year = Gregorian - 1911; the table is indexed by the REVENUE month, so August 2026 is 115_8",
+          "row": "stock code 2330",
+          "field": "yoy_pct (the month's YoY revenue growth, column 7 of the MOPS row)",
+          "unit_handling": "MOPS publishes a percentage (e.g. 44.68). It is stored as a FRACTION (0.4468) per the repo's X4 convention, which is the form match.py grades against the 0.40 threshold.",
+          "availability": "the ROC 115_8 table does not exist yet — checked 2026-08-11, the URL returns an 869-byte stub with no rows. It publishes ~2026-09-10. assist_actual refuses it gracefully until then."
+        },
+        "limitations": [
+          "GRANULARITY: the threshold anchors to a QUARTERLY consensus growth rate (Q3-2026, confirmed by the year-ago base matching MOPS Q3-2025 exactly) while the observable measures a SINGLE MONTH's growth. August 2026 falls inside Q3-2026, so the anchor is coherent — but one month can beat or miss the quarter it sits in, and a monthly print is the noisier number. This is a property of the sealed claim, not of the reading.",
+          "The claim is SEALED-CALIBRATION: it grades on the shadow rate only and confers no ALPHA credit either way."
+        ],
+        "ruled_utc": "2026-08-11",
+        "ruled_in": "P-G45 (DEBT C29)"
+      }
+    },
+    "wall_currency": {
+      "fields": [
+        {
+          "ticker": "TSM",
+          "field": "revenue_estimate.0q.growth",
+          "block": "revenue_estimate",
+          "currency": "TWD",
+          "state": "OK",
+          "why": "TSM.revenue_estimate.0q.growth is denominated in TWD (level (.avg/.low/.high); the .growth leaf is a dimensionless RATE whose BASIS is this currency; the filer's reporting currency — NOT the quote currency)"
+        }
+      ],
+      "unanswered": [],
+      "state": "OK",
+      "why": "every cited wall field's currency is stated in the sidecar"
+    },
+    "checked_utc": "2026-09-15T06:31:07Z"
+  },
+  "resolution_sha256": "f782493f6c04fe129aa1cab9a03e6b69fb6e3b1a6df83f3a0678dfb5f4cf03a0",
+  "xpost_draft": "ADF v1 resolution — jobA-20260727T075315Z-C8: CONFIRM\nTSM September-2026 monthly revenue print, YoY >= 0.4 % | actual 0.5332 as of 2026-09-15\nres-sha256 f782493f6c04fe12  #ADF"
+}

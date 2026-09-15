@@ -1,0 +1,43 @@
+{
+  "TSM.monthly_revenue_yoy": 0.5332,
+  "provenance": {
+    "_doc": "Assisted actual (DEBT C21). The machine fetched and parsed; the OPERATOR attested that the stored value matches the published source. Grading is unchanged and mechanical — match.py reads the actual_key values above.",
+    "tool": "tools/assist_actual.py",
+    "claim_id": "jobA-20260727T075315Z-C8",
+    "written_utc": "2026-09-15T06:28:21Z",
+    "operator_attested": true,
+    "entries": {
+      "TSM.monthly_revenue_yoy": {
+        "value": 0.5332,
+        "url": "https://mopsov.twse.com.tw/nas/t21/sii/t21sc03_115_8_0.html",
+        "snippet": "stock_code=2330 | name=台積電 | revenue_month=514,805,337 | revenue_prev_month=467,580,548 | revenue_year_ago_month=335,771,691 | mom_pct=10.09 | yoy_pct=53.32 | revenue_cumulative=3,386,869,575 | revenue_cumulative_year_ago=2,431,982,931 | cumulative_yoy_pct=39.26 | note=因先進製程產品需求增加所致。",
+        "fetched_utc": "2026-09-15T06:26:43Z",
+        "source_of_actual": "manual:TSM September-2026 monthly revenue print, YoY (~Sept 10 2026 release; Taiwan MOPS page-check)",
+        "metric": "TSM September-2026 monthly revenue print, YoY",
+        "unit": "%",
+        "route": "twse_mops",
+        "machine_parsed": true,
+        "parsed_value": 0.5332,
+        "parsed_display": "53.32",
+        "parse_note": "one row for 2330",
+        "corrected": false,
+        "operator_attested": true,
+        "attested_utc": "2026-09-15T06:28:21Z",
+        "value_note": "published 53.32% -> stored 0.5332 (FRACTION convention, unit '%')",
+        "grading_basis": {
+          "state": "SPECIFIED",
+          "period": "2026-08",
+          "currency": "TWD",
+          "currency_immune": false,
+          "source_field": "yoy_pct (the month's YoY revenue growth, column 7 of the MOPS row)",
+          "limitations": [
+            "GRANULARITY: the threshold anchors to a QUARTERLY consensus growth rate (Q3-2026, confirmed by the year-ago base matching MOPS Q3-2025 exactly) while the observable measures a SINGLE MONTH's growth. August 2026 falls inside Q3-2026, so the anchor is coherent — but one month can beat or miss the quarter it sits in, and a monthly print is the noisier number. This is a property of the sealed claim, not of the reading.",
+            "The claim is SEALED-CALIBRATION: it grades on the shadow rate only and confers no ALPHA credit either way."
+          ],
+          "amendments": [],
+          "ruled_in": "P-G45 (DEBT C29)"
+        }
+      }
+    }
+  }
+}
