@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-09-17 — 1 resolved (1 confirmed); 1 shock(s) proposed. next checkpoint Sep 24 — MU fiscal-Q4 FY26 earnings.
+pulse-sha256 37e24f44b967e5cc  #ADF $TSM $MU $AMKR $QCOM
+// ---- not part of the post ----
+// body is 182/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
