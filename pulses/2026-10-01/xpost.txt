@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-10-01 — 1 shock(s) proposed. next checkpoint Oct 8 — Samsung Q3 preliminary guidance.
+pulse-sha256 be15c28ed1ad5e8b  #ADF $TSM $MU $AMKR $QCOM
+// ---- not part of the post ----
+// body is 160/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
