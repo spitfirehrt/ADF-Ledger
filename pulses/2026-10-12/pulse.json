@@ -1,0 +1,415 @@
+{
+  "artifact": "ADF pulse",
+  "epoch": "v1",
+  "run_utc": "2026-10-12T05:28:26Z",
+  "pulse_date": "2026-10-12",
+  "dry_run": false,
+  "spec": "docs/PULSE-PAYLOAD.md (Blueprint v1.14)",
+  "summary": {
+    "open_claims": 8,
+    "alpha": 8,
+    "calibration": 0,
+    "watches": 0,
+    "watches_retired": 0,
+    "tracked": 3,
+    "shocks_active": 0,
+    "shocks_proposed": 0,
+    "resolved_since_last": 0,
+    "assessed": 8,
+    "assessments_flagged": 3,
+    "checkpoints_settled": 0,
+    "board_quiet": true
+  },
+  "sealed": [
+    {
+      "id": "jobA-20260726T115635Z-C11",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "TSM",
+          "MEDIATEK"
+        ],
+        "edges": []
+      },
+      "observable_summary": "MediaTek September-2026 monthly revenue print, YoY  [>= +5%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 19,
+      "as_of_date": "2026-10-31",
+      "next_checkpoint": "TSM Q3 FY26 earnings ~2026-10-15"
+    },
+    {
+      "id": "jobA-20260727T075315Z-C4",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "MU"
+        ],
+        "edges": [
+          "MU__SKHYNIX__hbm_capacity"
+        ]
+      },
+      "observable_summary": "MU GAAP consolidated gross margin, fiscal Q4 FY2026 (earnings release, ~late Sept 2026)  [<= 55%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 19,
+      "as_of_date": "2026-10-31",
+      "next_checkpoint": "SK hynix Q3 earnings ~2026-10-24"
+    },
+    {
+      "id": "jobA-20260729T064012Z-C6",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "AMKR"
+        ],
+        "edges": [
+          "AAPL__AMKR__osat_packaging",
+          "AMKR__TSM__adv_packaging_overflow"
+        ]
+      },
+      "observable_summary": "AMKR quarterly revenue YoY growth  [<= +15%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 19,
+      "as_of_date": "2026-10-31",
+      "next_checkpoint": "TSM Q3 FY26 earnings ~2026-10-15"
+    },
+    {
+      "id": "QCOM-septq-rev-yoy-2026",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "QCOM"
+        ],
+        "edges": [
+          "SAMSUNG__QCOM__handset_socs",
+          "AAPL__QCOM__handset_modems"
+        ]
+      },
+      "observable_summary": "QCOM FY2026 Sept-quarter (fiscal Q4) revenue YoY growth  [> -6.68%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 34,
+      "as_of_date": "2026-11-15",
+      "next_checkpoint": "QCOM fiscal-Q4 FY26 earnings ~2026-11-05"
+    },
+    {
+      "id": "jobA-20260729T064012Z-C5",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "KLA"
+        ],
+        "edges": [
+          "TSM__KLA__process_control"
+        ]
+      },
+      "observable_summary": "KLA September-2026 quarter revenue YoY growth (FY2027 Q1, quarter ending 2026-09-30)  [>= +15%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 34,
+      "as_of_date": "2026-11-15",
+      "next_checkpoint": "TSM Q3 FY26 earnings ~2026-10-15"
+    },
+    {
+      "id": "jobA-20260726T115635Z-C4",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "LRCX",
+          "ASX"
+        ],
+        "edges": []
+      },
+      "observable_summary": "LRCX latest-quarter revenue YoY growth (beats the cited +29% consensus)  [>= +31%]",
+      "window": [
+        1
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 49,
+      "as_of_date": "2026-11-30",
+      "next_checkpoint": "LRCX Sept-quarter earnings ~2026-10-22"
+    },
+    {
+      "id": "HBM-zerosum-skhynix-spread-2026",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "MU",
+          "SKHYNIX",
+          "SAMSUNG"
+        ],
+        "edges": [
+          "MU__SKHYNIX__hbm_capacity",
+          "SKHYNIX__NVDA__hbm",
+          "SAMSUNG__NVDA__hbm"
+        ]
+      },
+      "observable_summary": "SKHYNIX total return minus mean total return of {MU, SAMSUNG}, seal date to 2026-12-31  [<= -10%]",
+      "window": [
+        2
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 80,
+      "as_of_date": "2026-12-31",
+      "next_checkpoint": "SK hynix Q3 earnings ~2026-10-24"
+    },
+    {
+      "id": "AVGO-wafer-hike-multiple-2027",
+      "tag": "ALPHA",
+      "tier": "graded (ALPHA confirm-rate)",
+      "address": {
+        "nodes": [
+          "AVGO",
+          "TSM"
+        ],
+        "edges": [
+          "TSM__AVGO__foundry_wafers"
+        ]
+      },
+      "observable_summary": "AVGO share price (multiple/margin compression)  [<= $480]",
+      "window": [
+        2
+      ],
+      "status": "evidence-accumulating",
+      "days_to_resolution": 111,
+      "as_of_date": "2027-01-31",
+      "next_checkpoint": "TSM Q3 FY26 earnings ~2026-10-15"
+    }
+  ],
+  "watch": [],
+  "watch_retired": [],
+  "tracked": [
+    {
+      "id": "jobA-20260727T075315Z-C5",
+      "title": "Equipment cluster priced idiosyncratically strong_buy but is one correlated 2Q-lagged capex bet."
+    },
+    {
+      "id": "jobA-20260727T075315Z-C6",
+      "title": "AAPL inverted target reads ex-growth, missing a TSM-locked refresh + Broadcom content lock (frame inversion)."
+    },
+    {
+      "id": "jobA-20260729T064012Z-C12",
+      "title": "AAPL priced ex-growth (PT 318.8 < price 333, only large-cap set to fall); an M5 Mac/iPhone hardware upcycle on TSM N2 sole-source plus refreshed Broadcom connectivity content."
+    }
+  ],
+  "assessment": {
+    "assessment_schema": "1",
+    "label": "machine assessment — the sealed claim is unchanged",
+    "model": "x-ai/grok-4.5",
+    "prompt_id": "job-b-assess-v1.1",
+    "graded": false,
+    "not_assessed": [],
+    "by_claim": {
+      "jobA-20260726T115635Z-C11": {
+        "pressure": "quiet",
+        "confidence": 56,
+        "case": "Window is pure TSMC Q3/September record-revenue prints (NT$1.49T, +50-54% Y/Y); zero MediaTek September monthly revenue items, so the sealed YoY observable is untouched.",
+        "adf_shallow": {
+          "consensus": "Street holds MEDIATEK 0q revenue growth at -0.0245 with strong_buy rating.",
+          "deviation_status": "UNCHANGED — no MediaTek print arrived to test the >=5% deviation.",
+          "synthesis": "Stand by for the ~Oct 10 MediaTek Taiwan monthly; nothing in this window moves the claim."
+        },
+        "confidence_note": "No new information on the actual_key; prior 56 stands pending the sealed release date.",
+        "evidence": [],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 56,
+        "confidence_delta": 0
+      },
+      "jobA-20260726T115635Z-C4": {
+        "pressure": "quiet",
+        "confidence": 28,
+        "case": "LRCX items cover Korea chamber milestone/support-revenue jump and NAND; ASX items cover facility buys and CoWoS overflow chatter; no LRCX-ASX tool disclosure or LRCX rev-YoY print that tests >=31%.",
+        "adf_shallow": {
+          "consensus": "Street holds LRCX 0q revenue growth at +52.77% / +29% cited, strong_buy.",
+          "deviation_status": "UNCHANGED — still no direct advanced-packaging supply link or quarterly actual.",
+          "synthesis": "Remain stood down until a direct LRCX-ASX tool disclosure; observable still untested."
+        },
+        "confidence_note": "Prior 28 unchanged; evidence stays off the sealed LRCX.rev_yoy metric.",
+        "evidence": [],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 28,
+        "confidence_delta": 0
+      },
+      "AVGO-wafer-hike-multiple-2027": {
+        "pressure": "falling",
+        "confidence": 3,
+        "case": "AVGO $50B OpenAI/Anthropic chip-financing headlines travel TSM__AVGO__foundry_wafers as pure demand tailwind; TSMC record AI revenue reinforces the positive narrative the claim says should be margin-negative, pushing AVGO price further from <=480.",
+        "adf_shallow": {
+          "consensus": "Street AVGO strong_buy, target_mean ~531, price 361, 0q rev growth +93%.",
+          "deviation_status": "WEAKENING — financing and TSMC AI prints keep multiple-expansion path live into 2027.",
+          "synthesis": "Keep ≤480 short-multiple stood down; path of least resistance still higher into Jan-2027."
+        },
+        "confidence_note": "Prior 3 held; OpenAI funding and TSMC beat add no cost-shock evidence and raise the bar to hit <=480.",
+        "evidence": [
+          "CBMizgFBVV95cUxObU9Wc2xwM1A2RjNZaWJVM0ZLZWl3MGJBZUJhdHc5V3hQZXVKZGQzZUxrMjMyRE1EMGJXVEk0dmpzSGRZeURZc3Q5Nm1wdGkyeEprcXBILU5jNGRIT3lHcEVzVWZMbkpBYXVyZ2w4VktBdnBtRUtLUFFjMWlKc2JlZlQ3YUlHblRSRmJjQWNxelhoOFZBQm9iOGNsaTFWaWNGSXVsX2VWbWtkdmFLSmhDbUxuSTZkVUhrODBSb19XcUxWdmh0OEl0R2lHYlg3dw",
+          "CBMiqwFBVV95cUxPUlI5SWlmSHJfTHc3WnBsOU1ncnFIdjh2NVJ3YTJJVmJMUGRnTFN6c3o4QmdCQXRNVUQ4UWVqR0E3S2NWMl8yQWFDRjl5TF9zV2VUUWhBMHpaSFJZTkxTVVpLV1h1cVJVR0pBQzdPX1V3R2dsUFdIU0sycHhWTlh2WE5fdHp3WHN4UEFWMXlTYVBLYVF4NGExWVRMQUhYRzZveklSa1NfOTBnZHc"
+        ],
+        "flagged": true,
+        "alerts": [
+          {
+            "kind": "low_confidence",
+            "detail": "confidence 3% <= 10%"
+          }
+        ],
+        "graded": false,
+        "prior_confidence": 3,
+        "confidence_delta": 0
+      },
+      "HBM-zerosum-skhynix-spread-2026": {
+        "pressure": "rising",
+        "confidence": 62,
+        "case": "Samsung locks 75-80% of next-year memory output in long-term deals and passes Nvidia HBM4E quals -> SAMSUNG__NVDA__hbm and MU__SKHYNIX__hbm_capacity, tightening the shared pool against SK hynix even as SK hynix starts HBM4 volume.",
+        "adf_shallow": {
+          "consensus": "Street prices MU/SKHYNIX/SAMSUNG as uniform HBM rally (all strong_buy, triple-digit growth).",
+          "deviation_status": "STRENGTHENING — Samsung capacity lock-up is the live zero-sum mechanism the claim needs.",
+          "synthesis": "Lean the <=-10% SKHYNIX-vs-peers spread short; Samsung share grab is now the live mechanism."
+        },
+        "confidence_note": "Prior 55 raised on multiple independent Samsung 80% lock-up prints plus HBM4E Nvidia pass; still two months of price path risk.",
+        "evidence": [
+          "CBMidkFVX3lxTFB1NmpJV0tiNE9lTVI0LW1ab3c4U2Iwc2ZaOUZDYUUzbnd0ckJwaVljRHFVMEpBbUw3aE9fcXV5N1RiWEYxRnV0TXdueWhHdC1rUmZCdDMwbWpPS2tua0dhdmFRMW9yeGY4Y0dYcFpoUXUtNEpZX3c",
+          "CBMiVEFVX3lxTFBBWmdYUGs5R0FCODF2S19JNFNDeXBoNXhmT1FMaFhvQ192YlpUWGRud2o0TkluMXRfM1IwQUFJa2JiRzJlQ2NuNlQ4Y09JRVdXWVJaQw",
+          "CBMiqAFBVV95cUxQaU5ub2hONTJHZW1jbDkxaUJJWndVY04tOVV1SVM0ei1UN1c1SUJrZ21zQUFwM0JsbVpIRXNrRmFxRXpiMUR0VG5OZG1qUnhHblVrOElURnVhT0VISEN0dXlNUW42UkdmZnI1Q1Zvc05OQ1ItZkJYbzlrWnl4ZE0xZjRaMlJIamtGTlRXUUxiSnlxMDY4UnZzd1F3M3FZb05NdE9RYm42dWo",
+          "CBMi2gFBVV95cUxNM2R4bkx4T3FPWFhDOFQ1bWV1aUlBeG04SW5ueHpoQjJqZm1BeFRuOVlsYkpJZ1psZDVXUDBmYTZLM0hFZWwwX3NXUG9rNXNTTU9mWFozcm9nUGd2NHQwY0tNcnNZcEFCbFp4WFJRcDhHYkJHNDE5cHpodHJ5YldZRXZvZHlUc29ZS3JVRzA4WWZOUXBqTzNnUnNKdTFyOTJRN3Rkd3R2TGd6ZmJPQTdyY0ZlUmNfVEF6UXFGaEt2NUg0NVF2X2tJWXBKZ0VITGZMdzh0azUtRG9jUQ",
+          "CBMid0FVX3lxTFB5LUVpV1AxVER5SlFtSjVOaWt3VmhOVUxDc25ic0VhVndlQ0ZpNVBpWnlJX0V2SWhERFVNMWM5NkNya0FETGRKWFFJa3UwWUtTNzJrWTFmUHhSNlJiVEM3Mkx3dWMxZmpiX19yLVJwdjVWaFFmY2ww"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 55,
+        "confidence_delta": 7
+      },
+      "QCOM-septq-rev-yoy-2026": {
+        "pressure": "quiet",
+        "confidence": 68,
+        "case": "Apple iPhone 18 Pro component-order cuts travel AAPL__QCOM__handset_modems negative; offsetting Samsung Galaxy S27 Ultra 'Qualcomm-only' tip travels SAMSUNG__QCOM__handset_socs positive; net no clear move on the sealed Sept-q YoY.",
+        "adf_shallow": {
+          "consensus": "Street frames QCOM as structural decliner (0q growth -10%, hold) on Apple modem loss.",
+          "deviation_status": "UNCHANGED — Apple cut and Samsung win headlines cancel; still waiting on the FYQ4 print.",
+          "synthesis": "Hold the >-6.7% long into Nov FYQ4; still waiting on the actual print, not the patent/order headlines."
+        },
+        "confidence_note": "Prior 70 nudged down slightly on Apple order-cut salience; Samsung SoC exclusive tip keeps the offset alive.",
+        "evidence": [
+          "CBMi2AFBVV95cUxPZkJIZFpPNTNBbkp3S0JGeTZyYl9iOUZzcnRyYUNZcHVxMTJCdEhrNHpUbTN2Nkh5cGczNjV2WTlmSTdxcDZENHpZUUtTNHgzeTlaNEMzWlBOcE5vcFZqeGRTc3htVS1IdVJtM1A1a1g3Y1dzRU02a2tPREpIMmZQdHl5WDBDUmtEUzJDTnlFWURUdU5Cc0JscTg5cGhpYlF0dENyZFlBYlVuTWdUcGo3c1JQVE9LTTRWd1Zzbk9RMFFVUVl4Zzl0MUQ4Z2hpVGVhRmNZZEdMX3k"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 70,
+        "confidence_delta": -2
+      },
+      "jobA-20260727T075315Z-C4": {
+        "pressure": "falling",
+        "confidence": 1,
+        "case": "Window is wall-to-wall AI-memory price/profit surge and Samsung/SK Hynix/MU HBM capacity lock-ups; no CXMT commodity-DRAM margin pressure appears, and prior already flagged the GM observable resolved against <=55%.",
+        "adf_shallow": {
+          "consensus": "Street treats MU as pure HBM-scarcity winner (rev growth +352%, strong_buy).",
+          "deviation_status": "WEAKENING — every tagged item reinforces scarcity pricing, opposite the commodity-DRAM undershoot thesis.",
+          "synthesis": "GM≤55% short fully retired; observable has resolved against the claim."
+        },
+        "confidence_note": "Prior 1 unchanged; no contrary GM evidence and memory supercycle headlines only confirm the miss.",
+        "evidence": [
+          "CBMidkFVX3lxTFB1NmpJV0tiNE9lTVI0LW1ab3c4U2Iwc2ZaOUZDYUUzbnd0ckJwaVljRHFVMEpBbUw3aE9fcXV5N1RiWEYxRnV0TXdueWhHdC1rUmZCdDMwbWpPS2tua0dhdmFRMW9yeGY4Y0dYcFpoUXUtNEpZX3c"
+        ],
+        "flagged": true,
+        "alerts": [
+          {
+            "kind": "low_confidence",
+            "detail": "confidence 1% <= 10%"
+          }
+        ],
+        "graded": false,
+        "prior_confidence": 1,
+        "confidence_delta": 0
+      },
+      "jobA-20260729T064012Z-C5": {
+        "pressure": "rising",
+        "confidence": 87,
+        "case": "TSMC $64B capex still-may-not-be-enough piece explicitly tags TSM__KLA__process_control; KLA raised-2027-guidance note offsets the Morgan Stanley target cut, keeping Sept-q >=15% path intact.",
+        "adf_shallow": {
+          "consensus": "Street gives KLA the weakest equipment rating (buy, target 233, 0q growth +26%) despite TSMC concentration.",
+          "deviation_status": "STRENGTHENING — incremental TSMC capex commentary supports the under-priced N2/process-control tailwind.",
+          "synthesis": "Sept-q ≥15% remains base case with incremental TSM-capex support; hold the long."
+        },
+        "confidence_note": "Prior 88 essentially held; MS target cut is noise against raised guidance and TSMC capex link.",
+        "evidence": [
+          "CBMipwFBVV95cUxPRWxLRDFYaXJIUnVaanhNR0FqcW9uMXZnRjdiVHBLcUpwSXV1RTlkM0tWOEx5QzBQb3JxWlhwQ3VNWVoxRVhFaTZZQlNCaWthLWVWaG93VmNwb3UzZk9oZEhTRXkycXBjQ0U4MXhUY0JrQjhodG43b191aHVDekwwUHphTVI3TlN6YlQ1WW9oa0ltNXFJbzV5TGdjVXduYkN1dkt4TGpnSQ",
+          "CBMilgFBVV95cUxQVnBVMzBqT2VhYndlcXFkc3Z0VWxLVE8zNFFrM2V1WVdzYmNMQ2dyeGF4aHJkU2tsWTdGdkpVaFpRbXJ0QXdqLWZRT0RhOURTSkdQZERhU0FWMll5aUdrYl9PZ1JoUzF5TDIwdUZyRFJHVnU0Wm1lRFp3N1N3S21lZFhGQWVRYXZDQ0FmOFhGeEtaNk5yQUE",
+          "CBMi3AFBVV95cUxNTVZ3M0IxSHBDcy1DaFV2bXZlUzZSNjk0UzRhNHBNVnIxNFNla1pma0xJVWlkWkhEQlNFcVhEUGFhcWdPTFE4bHJDSXJ3eGJlZDgwQUVINDA2a1MyWGREVEZYZFlZWTJyM1g5VEJVdlppdVBpcTlkN2pRR19Qek1lNldfLXFVYVE5MkhUem5NTXEwZmlEZVBTUDdLeFItcTRMelJSVHpQVnBiVGRCTi16amJlOWY5MVQ5a0x1RWNyQlBiNWhJSlR0UV9sbzl2WWc4TlZLWFRTRm13c0st"
+        ],
+        "flagged": false,
+        "alerts": [],
+        "graded": false,
+        "prior_confidence": 88,
+        "confidence_delta": -1
+      },
+      "jobA-20260729T064012Z-C6": {
+        "pressure": "falling",
+        "confidence": 2,
+        "case": "TSMC-GlobalFoundries $2B US silicon-interposer/CoWoS deal tags AMKR__TSM__adv_packaging_overflow yet routes capacity to GF, not AMKR; AMKR price -3.7% vs ASX peers +2.6% already prices the Apple-mix cap the claim needs, but AI-packaging narrative still sits above the fail threshold.",
+        "adf_shallow": {
+          "consensus": "Street still frames AMKR as CoWoS-overflow AI packaging name (target 76 vs 49).",
+          "deviation_status": "WEAKENING — GF interposer win and peer divergence show overflow not accruing to AMKR; Apple book remains the governor.",
+          "synthesis": "Do not lean ≤15%; AI narrative and prior prints already sit above the fail threshold."
+        },
+        "confidence_note": "Prior 2 held; GF deal and price divergence add no path to <=15% and keep confidence near floor.",
+        "evidence": [
+          "CBMigwJBVV95cUxOQlpVMmk3OHdIMmdkQ1ZNUkhRbDN0cDNCVlpZSG5wcS1UWFpxM0hrN3hsLUFfOENTLUkyTUxHOFpMemVxS3V0Yllfa2ttN0RVMjhXaGNYdlpwWS05UGNyTUtnTmlxYnFaTW1ZR19DZXFTazBLeUtDVkN0VlE5bUNFWldjeF9MQTNWT1VsSm0zS1FmV0hTVUFnLU1jWEdEcXlRQU1UZ3RieFVSSUlPaUJtZVlqRVozWXRoNU5XV1czdk5PNGdUSGxVZ2tRakZTbFA3a2JhUUJpY3JUR1poR25UOHRONHlzeXF1bmtpeXB3aXp0azc2aVA3TlRBTnROT1I4b2dz",
+          "price_anomaly:AMKR:2026-10-12"
+        ],
+        "flagged": true,
+        "alerts": [
+          {
+            "kind": "low_confidence",
+            "detail": "confidence 2% <= 10%"
+          }
+        ],
+        "graded": false,
+        "prior_confidence": 2,
+        "confidence_delta": 0
+      }
+    },
+    "wall_provenance": {
+      "epoch": "v1",
+      "before_utc": "2026-10-08T08:15:18Z",
+      "after_utc": "2026-10-12T08:15:09Z",
+      "refreshed": true,
+      "status": "REFRESHED",
+      "age_hours": -0.0,
+      "stale": false,
+      "stale_threshold_hours": 120,
+      "note": "",
+      "firewall_role": "LIVE-TRACKING"
+    }
+  },
+  "checkpoint_outcomes": [],
+  "shocks": {
+    "active_or_approved": [],
+    "proposed": [],
+    "propagation_rows": [],
+    "board_quiet": true
+  },
+  "resolutions": []
+}
