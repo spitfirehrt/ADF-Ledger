@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ADF · Live record — 2026-10-27</title>
+<style>/* ============================================================================
+   ADF DESIGN SYSTEM  —  v4.1  EDITORIAL block dashboard (dark cards on cream).
+   SOURCE OF TRUTH for every ADF surface. Governed by docs/DESIGN-SPEC.md. Inlined
+   into each surface at render time (self-contained; works from file://).
+
+   Skin from the operator's reference reports (docs/design-research/*.html): warm
+   paper canvas, black header band, hairline vertical COLUMN-RULE texture, serif
+   display for masthead + section heads, sans for block content, mono for data, ONE
+   deep-red accent. The blocks are DARK ink-on-black cards on the cream canvas (as the
+   reference's data cards are), rounded, with light text and brightened accents; a
+   left stripe reads tag (alpha vs calibration), the days figure reads proximity.
+   Structure is the v4 block dashboard (state strip -> tile wall -> region band ->
+   footer; click-to-expand; full data density).
+   ============================================================================ */
+
+:root{
+  /* cream chrome (canvas, section heads, footer) */
+  --paper:#f0ece3;           /* warm cream canvas + light text on dark cards */
+  --ink:#1c1a14;             /* near-black — section heads, footer */
+  --header:#0f0d09;          /* black header band */
+  --ink-2:#6f6656;           /* secondary on cream */
+  --faint:#9a9080;           /* metadata on cream */
+  --line:#d6cbb4;            /* hairline on cream */
+  --line-2:#b8ac8f;          /* stronger hairline on cream */
+
+  /* dark cards */
+  --card:#16120b;            /* block fill (dark) */
+  --card-2:#201a11;          /* hover / expanded */
+  --card-2c:#b6ac96;         /* secondary text on dark cards */
+
+  /* accents — brightened for legibility on black */
+  --accent:#8b1a1a;          /* deep red for cream-context links */
+  --alert:#cc2f26;           /* bright red — mark, key numbers, alpha, near, live shock */
+  --slate:#8a9bac;           /* calibration / mid-proximity (light slate on dark) */
+  --gold:#c9922a;            /* watches — warming */
+  --confirm:#4aaa6a;         /* verdict confirm (bright on dark) */
+  --miss:#d1554a;            /* verdict miss (equal weight) */
+
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,"Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--paper); }
+body{ margin:0; padding:0; color:var(--ink);
+  font-family:var(--sans); font-size:14px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:repeating-linear-gradient(90deg, transparent 0, transparent 59px, rgba(28,26,20,0.05) 59px, rgba(28,26,20,0.05) 60px);
+}
+.mono{ font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:0; }
+a{ color:var(--accent); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+.dash{ max-width:1560px; margin:0 auto; padding:16px 18px 26px; }
+
+/* ---- header: BLACK band, serif mark, whole-state strip ---------------------- */
+.top{ display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  background:var(--header); color:var(--paper);
+  border-bottom:3px solid var(--alert); padding:14px 18px; border-radius:10px 10px 0 0; }
+.brand{ font-family:var(--serif); font-size:20px; font-weight:700; letter-spacing:.01em; }
+.brand span{ color:var(--alert); }
+.dry{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--paper); border:1px solid var(--alert); padding:2px 8px; border-radius:4px; }
+.sums{ display:flex; gap:18px; flex-wrap:wrap; margin-left:auto; }
+.sum{ font-family:var(--mono); font-size:12px; color:rgba(240,236,227,0.72); white-space:nowrap; }
+.sum b{ color:var(--paper); font-weight:600; }
+.sum.hot b{ color:var(--alert); }
+.meta{ font-family:var(--mono); font-size:11px; color:rgba(240,236,227,0.5); white-space:nowrap; }
+
+/* ---- region scaffold: SERIF display heads (ink on cream) ------------------ */
+.region{ margin-top:22px; }
+.region > h2, .col > h2{ font-family:var(--serif); font-size:19px; font-weight:700; color:var(--ink);
+  margin:0 0 12px; display:flex; gap:10px; align-items:baseline; border-bottom:1px solid var(--line-2); padding-bottom:6px; }
+.region > h2 .c, .col > h2 .c{ font-family:var(--mono); font-size:11px; font-weight:400; color:var(--ink-2); letter-spacing:.02em; }
+
+/* ---- open positions: ROUNDED DARK cards ----------------------------------- */
+.wall{ display:grid; grid-template-columns:repeat(auto-fill,minmax(212px,1fr)); gap:12px; }
+.tile{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-radius:12px;
+  padding:15px 16px 16px; cursor:pointer; position:relative; }
+.tile:hover{ background:var(--card-2); }
+.tile.alpha{ border-left:4px solid var(--alert); }        /* left stripe = tag */
+.tile.cal{ border-left:4px solid var(--slate); }
+.tile .hdr{ display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.tile .tk{ font-family:var(--sans); font-size:24px; font-weight:700; letter-spacing:-0.015em; line-height:1; color:var(--paper); }
+.tag-chip{ font-family:var(--sans); font-size:11.5px; font-weight:600; letter-spacing:.01em;
+  padding:3px 10px; border-radius:999px; border:1px solid; white-space:nowrap; }
+.tag-chip.alpha{ color:var(--alert); border-color:rgba(204,47,38,0.5); background:rgba(204,47,38,0.12); }
+.tag-chip.cal{ color:var(--slate); border-color:rgba(138,155,172,0.45); background:rgba(138,155,172,0.12); }
+.tile .kind{ font-family:var(--sans); font-size:12.5px; color:var(--card-2c); margin-top:8px; }
+.tile .cond{ font-family:var(--mono); font-size:17px; font-weight:600; margin-top:13px; color:var(--paper); }
+.tile .days{ font-family:var(--mono); font-size:16px; font-weight:700; margin-top:13px; }
+.tile .days.near{ color:var(--alert); } .tile .days.mid{ color:var(--slate); } .tile .days.far{ color:var(--card-2c); }
+.tile .days small{ font-size:11px; font-weight:400; color:var(--faint); }
+.tile .next{ font-family:var(--sans); font-size:12.5px; color:var(--card-2c); margin-top:9px; line-height:1.45; }
+.tile .next b{ font-family:var(--mono); font-size:9.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--faint); margin-right:6px; }
+.tile .det{ display:none; margin-top:14px; padding-top:12px; border-top:1px solid rgba(240,236,227,0.14); }
+.tile.open{ background:var(--card-2); grid-column:span 2; }
+.tile.open .det{ display:block; }
+.det .kv{ display:grid; grid-template-columns:78px 1fr; gap:3px 10px; font-family:var(--mono); font-size:11px; }
+.det .kv dt{ color:var(--faint); }
+.det .kv dd{ margin:0; color:var(--card-2c); word-break:break-word; }
+.det .kv dd.on{ color:var(--paper); }
+
+/* ---- lower band: rounded DARK cards --------------------------------------- */
+.band{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:16px; margin-top:26px; }
+
+.wtile{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-left:4px solid var(--gold); border-radius:12px;
+  padding:14px 16px; margin-bottom:10px; cursor:pointer; }
+.wtile:hover{ background:var(--card-2); }
+.wtile .h{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+.wtile .wid{ font-family:var(--mono); font-size:12px; font-weight:600; color:var(--paper); }
+.wtile .st{ font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.02em; color:var(--gold); }
+.wtile .th{ font-family:var(--sans); font-size:14px; color:var(--paper); margin-top:8px; line-height:1.5; }
+.wtile .det{ display:none; margin-top:9px; padding-top:8px; border-top:1px solid rgba(240,236,227,0.14); font-size:13px; color:var(--card-2c); }
+.wtile.open .det{ display:block; }
+.wtile .m{ font-family:var(--mono); font-size:10.5px; color:var(--faint); margin-top:9px; }
+
+.trow{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-left:3px dashed rgba(240,236,227,0.28); border-radius:10px;
+  padding:11px 14px; margin-bottom:8px; }
+.trow .id{ font-family:var(--mono); font-size:10px; color:var(--faint); }
+.trow .t{ font-family:var(--sans); font-size:13.5px; color:var(--paper); margin-top:3px; line-height:1.45; }
+
+.state-tile{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.14); border-radius:12px; padding:16px 17px; }
+.state-tile .big{ font-family:var(--serif); font-size:16px; font-weight:700; color:var(--paper); }
+.state-tile .sub{ font-family:var(--sans); font-size:13px; color:var(--card-2c); margin-top:7px; line-height:1.5; }
+
+.shockrow{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-left:4px solid var(--alert); border-radius:10px; padding:11px 14px; margin-bottom:8px; }
+.shockrow .id{ font-family:var(--mono); font-size:10px; color:var(--faint); }
+.shockrow .t{ font-family:var(--sans); font-size:13px; color:var(--paper); margin-top:3px; }
+
+.res{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-radius:10px; padding:12px 14px; margin-bottom:8px; display:flex; gap:12px; align-items:baseline; }
+.res.confirm{ border-left:4px solid var(--confirm); } .res.disconfirm{ border-left:4px solid var(--miss); } .res.unresolved{ border-left:4px solid var(--slate); }
+.verdict{ font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.04em; min-width:92px; }
+.verdict.confirm{ color:var(--confirm); } .verdict.disconfirm{ color:var(--miss); } .verdict.unresolved{ color:var(--slate); }
+.res .rx{ flex:1; font-family:var(--sans); font-size:13px; color:var(--paper); }
+.res .rm{ font-family:var(--mono); font-size:10px; color:var(--faint); white-space:nowrap; }
+
+/* ---- footer (ink on cream) ------------------------------------------------ */
+.foot{ margin-top:26px; border-top:2px solid var(--ink); padding-top:12px;
+  font-family:var(--mono); font-size:10.5px; color:var(--ink-2); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.foot .sha{ color:var(--ink); word-break:break-all; max-width:70%; }
+
+/* ---- MACHINE ASSESSMENT (v2 payload spec) --------------------------------
+   Visually SUBORDINATE to the sealed facts by design: smaller, muted, set off by
+   a rule and a label. A reader must be able to tell at a glance which numbers the
+   record is accountable for and which are a machine's current opinion. */
+.tile .asmt{ display:flex; align-items:baseline; gap:8px; margin-top:11px; padding-top:9px;
+  border-top:1px dashed rgba(240,236,227,0.16); font-family:var(--mono); font-size:11.5px; }
+.tile .asmt .pr{ font-weight:700; letter-spacing:.02em; color:var(--card-2c); text-transform:uppercase; font-size:10px; }
+.tile .asmt .pr.rising{ color:var(--alert); } .tile .asmt .pr.falling{ color:var(--slate); }
+.tile .asmt .pr.quiet{ color:var(--faint); }
+.tile .asmt .cf{ color:var(--paper); font-weight:600; }
+.tile .asmt .bang{ color:var(--alert); font-weight:700; }
+.tile .asmt.flagged{ border-top-color:var(--alert); }
+/* A flagged tile is marked with an editorial rule, not a shadow (DESIGN-SPEC v4.1
+   BANS box-shadow / glassmorphism — surfaces are print, not glass). */
+.tile.flag{ border-top:2px solid var(--alert); }
+.det-asmt{ margin-top:12px; padding-top:10px; border-top:1px dashed rgba(240,236,227,0.20); }
+.det-asmt .lbl{ font-family:var(--mono); font-size:9.5px; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--faint); margin-bottom:7px; }
+.det-asmt .lbl .sub{ font-weight:400; letter-spacing:.02em; text-transform:none; color:var(--faint); }
+.det-asmt .none{ font-family:var(--sans); font-size:12px; color:var(--faint); }
+.det-asmt .alert{ font-family:var(--sans); font-size:12px; color:var(--alert); margin-bottom:6px; }
+.det-asmt .ovr{ font-family:var(--sans); font-size:12px; color:var(--gold); margin-bottom:6px; }
+.det-asmt .ovr .was{ color:var(--faint); }
+.asmt-note{ color:var(--ink-2); }
+
+/* ---- CHECKPOINT OUTCOMES (S6) --------------------------------------------- */
+.cks{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:12px; }
+.ck{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10);
+  border-left:4px solid var(--slate); border-radius:12px; padding:13px 15px; }
+.ck .h{ display:flex; align-items:baseline; gap:9px; }
+.ck .d{ font-family:var(--mono); font-size:11px; font-weight:700; color:var(--slate); white-space:nowrap; }
+.ck .ev{ font-family:var(--sans); font-size:13px; color:var(--paper); line-height:1.45; }
+.ck .cmp{ font-family:var(--mono); font-size:15px; font-weight:700; color:var(--paper); margin-top:10px; }
+.ck .cmp .vs{ font-family:var(--sans); font-size:11px; font-weight:400; color:var(--faint); margin:0 7px; }
+.ck .vd{ font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--gold); margin-top:7px; }
+.ck .m{ font-family:var(--mono); font-size:10px; color:var(--faint); margin-top:9px; line-height:1.5; }
+</style></head>
+<body>
+<div class="dash"><div class="top"><span class="brand"><span>ADF</span> · Live record</span><div class="sums"><span class="sum hot"><b>8</b> open</span><span class="sum"><b>8</b> alpha · <b>0</b> calibration</span><span class="sum"><b>0</b> watching</span><span class="sum"><b>3</b> tracked</span><span class="sum"><b>0</b> / <b>2</b> shocks</span><span class="sum"><b>0</b> resolved</span></div><span class="meta">epoch v1 · 2026-10-27T09:37:55Z</span></div><div class="region"><h2>Open positions <span class="c">8 graded · click a block for full detail · <span class="asmt-note">pressure · confidence is a machine assessment, not part of the sealed claim</span></span></h2><div class="wall"><div class="tile alpha"><div class="hdr"><div class="tk">MEDIATEK</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">revenue · YoY</div><div class="cond">≥ +5%</div><div class="days near">4<small>d</small></div><div class="asmt" title="machine assessment — the sealed claim is unchanged"><span class="pr quiet">quiet</span><span class="cf">56%</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">jobA-20260726T115635Z-C11</dd><dt>address</dt><dd>TSM,MEDIATEK</dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>MediaTek September-2026 monthly revenue print, YoY  [≥ +5%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Oct 31 (2026-10-31)</dd><dt>next</dt><dd> </dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><dl class="kv"><dt>case</dt><dd>MediaTek record-quarter headline is not the sealed September-2026 Taiwan monthly YoY print; TSM CoWoS/revenue items do not move MEDIATEK.revenue_growth.</dd><dt>consensus</dt><dd>Street holds MediaTek strong_buy with 0q revenue growth ~0.145 and the cited wall print at -0.0245 as the fade baseline.</dd><dt>deviation</dt><dd>UNCHANGED — no September monthly revenue actual arrived this window.</dd><dt>synthesis</dt><dd>Stand by for the ~Oct 10 Taiwan monthly print; ignore TSM allocation and MediaTek quarterly color for this observable.</dd><dt>confidence</dt><dd>Unchanged from prior: still pre-print, no mechanism moved the sealed monthly YoY.</dd></dl></div></div></div><div class="tile alpha flag"><div class="hdr"><div class="tk">MU</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">gross margin</div><div class="cond">≤ 55%</div><div class="days near">4<small>d</small></div><div class="asmt flagged" title="machine assessment — the sealed claim is unchanged"><span class="pr falling">falling</span><span class="cf">1%</span><span class="bang">!</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">jobA-20260727T075315Z-C4</dd><dt>address</dt><dd>MU <span style="color:var(--faint)">| MU__SKHYNIX__hbm_capacity</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>MU GAAP consolidated gross margin, fiscal Q4 FY2026 (earnings release, ~late Sept 2026)  [≤ 55%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Oct 31 (2026-10-31)</dd><dt>next</dt><dd> </dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><div class="alert">&#9888; low_confidence: confidence 1% &lt;= 10%</div><dl class="kv"><dt>case</dt><dd>Micron AI memory sold out through 2026 into 2028 and CEO tight-supply reaffirmation dominate MU__NVDA__hbm / MU__SKHYNIX__hbm_capacity; CXMT is only a controversy tag, not a commodity-DRAM margin hit into the Q4 GM print.</dd><dt>consensus</dt><dd>Street frames MU as strong_buy HBM-scarcity winner with extreme 0q growth (~3.5x) and elevated EPS.</dd><dt>deviation</dt><dd>WEAKENING — sold-out/tight-supply tape makes &lt;=55% GM almost unreachable versus the &gt;=60% fail path.</dd><dt>synthesis</dt><dd>GM short is dead; do not fade MU on commodity-DRAM/CXMT risk while HBM allocation headlines dominate.</dd><dt>confidence</dt><dd>Prior 1 unchanged: no commodity-margin evidence; sold-out-through-2028 further buries the short.</dd><dt>evidence</dt><dd><code>CBMioAFBVV95cUxPLTF2QmkzRUVoYjBYOE</code> <code>CBMi0gFBVV95cUxPbm1SNF8yYlFFNmlpSW</code> <code>CBMidkFVX3lxTE12dURBaUlRbi1nUUMyRH</code></dd></dl></div></div></div><div class="tile alpha flag"><div class="hdr"><div class="tk">AMKR</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">revenue · YoY</div><div class="cond">≤ +15%</div><div class="days near">4<small>d</small></div><div class="asmt flagged" title="machine assessment — the sealed claim is unchanged"><span class="pr falling">falling</span><span class="cf">1%</span><span class="bang">!</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">jobA-20260729T064012Z-C6</dd><dt>address</dt><dd>AMKR <span style="color:var(--faint)">| AAPL__AMKR__osat_packaging,AMKR__TSM__adv_packaging_overflow</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>AMKR quarterly revenue YoY growth  [≤ +15%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Oct 31 (2026-10-31)</dd><dt>next</dt><dd> </dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><div class="alert">&#9888; low_confidence: confidence 1% &lt;= 10%</div><dl class="kv"><dt>case</dt><dd>Amkor record $1.99B Q3, +400 bps GM on AI packaging, Q4 $1.9-2.0B guide and $1.3B Nvidia Korea expansion (plus 300% advanced-packaging capacity plan) light AMKR__TSM__adv_packaging_overflow hard; Apple-book cap thesis is overwhelmed.</dd><dt>consensus</dt><dd>Street has AMKR buy with modest 0q growth (~0.067 cited wall was ~0.20) still framed more consumer-OSAT than AI principal.</dd><dt>deviation</dt><dd>WEAKENING — live Nvidia overflow and record AI-packaging quarter push YoY well away from the &lt;=15% short.</dd><dt>synthesis</dt><dd>Do not lean &lt;=15%; overflow edge is live and the short trajectory has already failed.</dd><dt>confidence</dt><dd>Prior 1 held: record AI-packaging print and $1.3B NVDA deal leave no path to confirm the revenue short.</dd><dt>evidence</dt><dd><code>CBMiXkFVX3lxTFBuSU5VZ19KR2tRbGk0ZF</code> <code>CBMiaEFVX3lxTE1NbGVTSG4waWdqc2Z2Tl</code> <code>CBMihAFBVV95cUxPRTFUak1UZGY4TkF4Mm</code> <code>CBMiigFBVV95cUxNMlRtZ1p2YWxROGxxZ0</code> <code>CBMinwFBVV95cUxQaWRhZjBEaGM0MVBmam</code></dd></dl></div></div></div><div class="tile alpha"><div class="hdr"><div class="tk">QCOM</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">revenue · YoY</div><div class="cond">&gt; -6.68%</div><div class="days near">19<small>d</small></div><div class="next"><b>Next</b>Nov 5 · QCOM fiscal-Q4 FY26 earnings</div><div class="asmt" title="machine assessment — the sealed claim is unchanged"><span class="pr falling">falling</span><span class="cf">42%</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">QCOM-septq-rev-yoy-2026</dd><dt>address</dt><dd>QCOM <span style="color:var(--faint)">| SAMSUNG__QCOM__handset_socs,AAPL__QCOM__handset_modems</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>QCOM FY2026 Sept-quarter (fiscal Q4) revenue YoY growth  [&gt; -6.68%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Nov 15 (2026-11-15)</dd><dt>next</dt><dd>QCOM fiscal-Q4 FY26 earnings ~Nov 5</dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><dl class="kv"><dt>case</dt><dd>Samsung Galaxy production cuts and Exynos 2700 beating Snapdragon travel SAMSUNG__QCOM__handset_socs as demand/share loss; November performance-based layoff stack adds internal stress; hyperscaler ASIC order color is too thin to offset the Sept-Q handset book.</dd><dt>consensus</dt><dd>Street holds QCOM as hold with 0q growth ~-0.10 and frames structural modem/SoC decline.</dd><dt>deviation</dt><dd>WEAKENING — handset-cut and Exynos-share items raise odds the Sept-Q print sits at or below the -6.7% wall rather than beating it.</dd><dt>synthesis</dt><dd>Trim conviction on &gt;-6.7% Sept-Q beat; handset and competitive SoC pressure dominate into the print.</dd><dt>confidence</dt><dd>Prior 48 cut on Galaxy production slashes plus Exynos-outscore cluster; DC-chip order headline only partial offset.</dd><dt>trajectory</dt><dd>48% &rarr; 42% (-6 pts)</dd><dt>evidence</dt><dd><code>CBMikwFBVV95cUxOUzJXRDljMjI5eGdqbW</code> <code>CBMiV0FVX3lxTE9KZmV1WkJ1ZkVuQ2xlaF</code> <code>CBMiowFBVV95cUxNamVrTTBka1JGMU1Mdz</code> <code>CBMizgFBVV95cUxQV3ppRWRzak9jbHBXUl</code></dd></dl></div></div></div><div class="tile alpha"><div class="hdr"><div class="tk">KLA</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">revenue · YoY</div><div class="cond">≥ +15%</div><div class="days near">19<small>d</small></div><div class="next"><b>Next</b>Nov 10 · Taiwan monthly print</div><div class="asmt" title="machine assessment — the sealed claim is unchanged"><span class="pr quiet">quiet</span><span class="cf">80%</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">jobA-20260729T064012Z-C5</dd><dt>address</dt><dd>KLA <span style="color:var(--faint)">| TSM__KLA__process_control</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>KLA September-2026 quarter revenue YoY growth (FY2027 Q1, quarter ending 2026-09-30)  [≥ +15%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Nov 15 (2026-11-15)</dd><dt>next</dt><dd>Taiwan monthly print ~Nov 10</dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><dl class="kv"><dt>case</dt><dd>KLA -9.5% sigma drop and peer WFE selloff are price/multiple moves, not the Sept-Q revenue actual; TSM record revenue and raised 2026 forecast still support TSM__KLA__process_control but no KLA quarter print landed.</dd><dt>consensus</dt><dd>Street rates KLA buy with the weakest equipment upside and 0q growth ~0.26 / cited ~0.135 vs claim &gt;=15%.</dd><dt>deviation</dt><dd>UNCHANGED — equity weakness without a revenue miss leaves the TSM-capex confirmation path intact but untested this window.</dd><dt>synthesis</dt><dd>Hold Sept-Q &gt;=15% as base case on TSM spend; do not read the WFE tape washout as the sealed revenue observable.</dd><dt>confidence</dt><dd>Prior 86 trimmed on KLA/AMAT/LRCX washout and MS target cut; mechanism still TSM capex, no contrary revenue actual.</dd><dt>trajectory</dt><dd>86% &rarr; 80% (-6 pts)</dd><dt>evidence</dt><dd><code>CBMioAFBVV95cUxNMmUxekRsOUYtVC1YYl</code> <code>CBMirwFBVV95cUxNNUF4Z0lFTlplWXowdl</code> <code>price_anomaly:KLA:2026-10-23</code> <code>CBMinwFBVV95cUxNbHE1RXhMa0Fwb3B3dX</code> <code>CBMiqAFBVV95cUxQNWdsakpJVzdMNzZYY0</code></dd></dl></div></div></div><div class="tile alpha"><div class="hdr"><div class="tk">LRCX</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">revenue · YoY</div><div class="cond">≥ +31%</div><div class="days near">34<small>d</small></div><div class="next"><b>Next</b>Nov 10 · Taiwan monthly print</div><div class="asmt" title="machine assessment — the sealed claim is unchanged"><span class="pr falling">falling</span><span class="cf">14%</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">jobA-20260726T115635Z-C4</dd><dt>address</dt><dd>LRCX,ASX</dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>LRCX latest-quarter revenue YoY growth (beats the cited +29% consensus)  [≥ +31%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Nov 30 (2026-11-30)</dd><dt>next</dt><dd>Taiwan monthly print ~Nov 10</dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><dl class="kv"><dt>case</dt><dd>LRCX record revenue/earnings is offset by cautious Dec guide, China drop and supply-constraint ceiling (TradingView/Seeking Alpha/Yahoo); no LRCX→ASX packaging-tool disclosure appears, so the &gt;=31% YoY path stays impaired.</dd><dt>consensus</dt><dd>Street has LRCX strong_buy with 0q growth ~0.62 and the claim cites a +29% consensus hurdle.</dd><dt>deviation</dt><dd>WEAKENING — supply-snag and China-revenue headlines pull the print toward the &lt;29% fail band rather than a clean &gt;=31% beat.</dd><dt>synthesis</dt><dd>Remain stood down on any LRCX-ASX edge trade; observable still tracking toward fail.</dd><dt>confidence</dt><dd>Prior 18 cut on supply-cap/China-drop stack; record-revenue print alone does not clear the 31% bar without a disclosed YoY figure.</dd><dt>trajectory</dt><dd>18% &rarr; 14% (-4 pts)</dd><dt>evidence</dt><dd><code>CBMi9wFBVV95cUxPQS15c2RCMXVleklubm</code> <code>CBMipwFBVV95cUxNYkZEMUZsNGE0QzJWR0</code> <code>CBMioAFBVV95cUxNMmUxekRsOUYtVC1YYl</code> <code>CBMie0FVX3lxTFBtSlJ6QzlEVHF0WDJhbT</code></dd></dl></div></div></div><div class="tile alpha"><div class="hdr"><div class="tk">SKHYNIX</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">return spread</div><div class="cond">≤ -10%</div><div class="days mid">65<small>d</small></div><div class="asmt" title="machine assessment — the sealed claim is unchanged"><span class="pr rising">rising</span><span class="cf">78%</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">HBM-zerosum-skhynix-spread-2026</dd><dt>address</dt><dd>MU,SKHYNIX,SAMSUNG <span style="color:var(--faint)">| MU__SKHYNIX__hbm_capacity,SKHYNIX__NVDA__hbm,SAMSUNG__NVDA__hbm</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>SKHYNIX total return minus mean total return of {MU, SAMSUNG}, seal date to 2026-12-31  [≤ -10%]</dd><dt>window</dt><dd>[2]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Dec 31 (2026-12-31)</dd><dt>next</dt><dd> </dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><dl class="kv"><dt>case</dt><dd>Bernstein/Korea Herald: Samsung topples or may overtake SK hynix in HBM revenue and commands premium HBM prices; travels MU__SKHYNIX__hbm_capacity + SAMSUNG__NVDA__hbm vs SKHYNIX__NVDA__hbm while MU sold-out-through-2028 strengthens the MU leg of the spread.</dd><dt>consensus</dt><dd>Street prices MU/SKHYNIX/SAMSUNG as a uniform strong_buy HBM rally with elevated targets across the cluster.</dd><dt>deviation</dt><dd>STRENGTHENING — share-shift and premium-price items make the zero-sum edge visible and favor SKHYNIX relative underperformance.</dd><dt>synthesis</dt><dd>Lean the &lt;=-10% SKHYNIX-vs-MU/SAMSUNG total-return spread; relative loser is printing on board edges.</dd><dt>confidence</dt><dd>Prior 74 raised on Samsung HBM-revenue overtake plus MU sold-out confirmation; still open to cluster-wide squeeze into year-end.</dd><dt>trajectory</dt><dd>74% &rarr; 78% (+4 pts)</dd><dt>evidence</dt><dd><code>CBMidkFVX3lxTFBmb002Qkxjd0ZveGVobm</code> <code>CBMidEFVX3lxTE1RY2d5UVZ6N3BHa1R0cH</code> <code>CBMiV0FVX3lxTE1faVd5eWpUd3R1Mk5jLW</code> <code>CBMioAFBVV95cUxPLTF2QmkzRUVoYjBYOE</code> <code>CBMidkFVX3lxTE12dURBaUlRbi1nUUMyRH</code></dd></dl></div></div></div><div class="tile alpha flag"><div class="hdr"><div class="tk">AVGO</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">gross margin</div><div class="cond">≤ $480</div><div class="days mid">96<small>d</small></div><div class="next"><b>Next</b>Nov 10 · Taiwan monthly print</div><div class="asmt flagged" title="machine assessment — the sealed claim is unchanged"><span class="pr falling">falling</span><span class="cf">2%</span><span class="bang">!</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">AVGO-wafer-hike-multiple-2027</dd><dt>address</dt><dd>AVGO,TSM <span style="color:var(--faint)">| TSM__AVGO__foundry_wafers</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>AVGO share price (multiple/margin compression)  [≤ $480]</dd><dt>window</dt><dd>[2]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Jan 31 (2027-01-31)</dd><dt>next</dt><dd>Taiwan monthly print ~Nov 10</dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><div class="alert">&#9888; low_confidence: confidence 2% &lt;= 10%</div><dl class="kv"><dt>case</dt><dd>$63B bank/Blackstone SPV financing Broadcom AI chips for Anthropic (WSJ/Reuters/Investing) is pure demand support along TSM__AVGO__foundry_wafers; CoWoS ~20% packaging-hike chatter is not a 2027 wafer-price cost shock into AVGO.price.</dd><dt>consensus</dt><dd>Street is strong_buy AVGO with mean target ~530 and 0q growth ~0.94; claim needs price &lt;=480 by Jan-2027 as margin-compression.</dd><dt>deviation</dt><dd>WEAKENING — mega financing and CEO-sealed Anthropic lease structure push the multiple away from the short threshold.</dd><dt>synthesis</dt><dd>Keep the Jan-2027 &lt;=480 short stood down; demand financing dominates and no wafer-hike transmission printed.</dd><dt>confidence</dt><dd>Prior 3 cut further: $63B SPV is the opposite of margin-compression evidence into the price observable.</dd><dt>trajectory</dt><dd>3% &rarr; 2% (-1 pts)</dd><dt>evidence</dt><dd><code>CBMioAFBVV95cUxNbkxxMllvRjN2M1VzSV</code> <code>CBMi0gFBVV95cUxNY2ZrV3U0ekU5MlBNMD</code> <code>CBMifkFVX3lxTFB6U1I2V0FqY1R2ZlFmOW</code></dd></dl></div></div></div></div></div><div class="band"><div class="col"><h2>Watching <span class="c">0</span></h2><div class="state-tile"><div class="big">No active watches.</div></div></div><div class="col"><h2>Tracked <span class="c">3</span></h2><div class="trow"><div class="id">jobA-20260727T075315Z-C5</div><div class="t">Equipment cluster priced idiosyncratically strong_buy but is one correlated 2Q-lagged capex bet.</div></div><div class="trow"><div class="id">jobA-20260727T075315Z-C6</div><div class="t">AAPL inverted target reads ex-growth, missing a TSM-locked refresh + Broadcom content lock (frame inversion).</div></div><div class="trow"><div class="id">jobA-20260729T064012Z-C12</div><div class="t">AAPL priced ex-growth (PT 318.8 &lt; price 333, only large-cap set to fall); an M5 Mac/iPhone hardware upcycle on TSM N2 sole-source plus refreshed Broadcom connectivity content.</div></div></div><div class="col"><h2>Shocks <span class="c">2</span></h2><div class="shockrow"><div class="id">proposed · stress 11.946</div><div class="t">AAPL · dir +</div></div><div class="shockrow"><div class="id">proposed · stress 9.1217</div><div class="t">TSM__AAPL__leading_edge_soc · dir +</div></div></div><div class="col"><h2>Resolutions <span class="c">0</span></h2><div class="state-tile"><div class="big">No resolutions yet.</div><div class="sub">First positions resolve this autumn.</div></div></div></div><div class="region"><h2>Checkpoint outcomes <span class="c">0 settled since last pulse &middot; raw comparison, not a grade</span></h2><div class="cks"><div class="state-tile"><div class="big">No checkpoint passed</div><div class="sub">Nothing this record named as a checkpoint came due since the last pulse.</div></div></div></div><div class="foot"><span class="sha">sha256 b770b05c0f484c56863bfbb087474b742757ad8928c9644b11c7a731b9ba53ab</span><span>verify: <a href="https://opentimestamps.org">opentimestamps.org</a> · epoch v1 · docs/PULSE-PAYLOAD.md (Blueprint v1.14)</span></div></div>
+<script>document.addEventListener('click',function(e){var t=e.target.closest('.tile,.wtile');if(t){t.classList.toggle('open');}});</script>
+</body></html>

@@ -1,0 +1,8 @@
+ADF v1 pulse 2026-10-27 — 2 shock(s) proposed. next checkpoint Nov 5 — QCOM fiscal-Q4 FY26 earnings.
+pulse-sha256 b770b05c0f484c56  #ADF $TSM $MU $AMKR $QCOM
+// ---- not part of the post ----
+// body is 157/280 chars
+// LINK IN REPLY: post the adf-ledger URL as the FIRST REPLY,
+//   never in the body — a link in the post suppresses reach,
+//   and the hash above is what makes the post verifiable anyway.
+
