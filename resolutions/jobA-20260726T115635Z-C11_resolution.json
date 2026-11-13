@@ -1,0 +1,147 @@
+{
+  "claim_id": "jobA-20260726T115635Z-C11",
+  "epoch": "v1",
+  "verdict": "DISCONFIRM",
+  "reason": "observable not met",
+  "notes": [],
+  "evaluated_utc": "2026-11-11T09:51:50Z",
+  "sealed_commit": "e4ae899ef16bfc8aa02cb0614260015bcd014559",
+  "observable_eval": {
+    "actual_key": "MEDIATEK.revenue_growth",
+    "actual_value": 0.0196,
+    "comparator": ">=",
+    "threshold": 0.05,
+    "result": false
+  },
+  "fails_if_eval": {
+    "actual_key": "MEDIATEK.revenue_growth",
+    "actual_value": 0.0196,
+    "comparator": "<=",
+    "threshold": -0.0245,
+    "result": false
+  },
+  "actuals_ref": "jobA-20260726T115635Z-C11_actuals.json",
+  "as_of_date": "2026-10-31",
+  "graded_period": {
+    "observable": {
+      "actual_key": "MEDIATEK.revenue_growth",
+      "source_of_actual": "manual:MediaTek September-2026 Taiwan monthly revenue print, YoY (~Oct 10 release)",
+      "period_graded": "operator-entered value for the period named in the source text, as of 2026-10-31",
+      "prior_period": null,
+      "pinned": true,
+      "detail": "manual:jobA-20260726T115635Z-C11_manual.json"
+    },
+    "fails_if": {
+      "actual_key": "MEDIATEK.revenue_growth",
+      "source_of_actual": "manual:MediaTek September-2026 Taiwan monthly revenue print, YoY (~Oct 10 release)",
+      "period_graded": "operator-entered value for the period named in the source text, as of 2026-10-31",
+      "prior_period": null,
+      "pinned": true,
+      "detail": "manual:jobA-20260726T115635Z-C11_manual.json"
+    }
+  },
+  "preflight": {
+    "claim_id": "jobA-20260726T115635Z-C11",
+    "ledger": "live",
+    "as_of_date": "2026-10-31",
+    "metric": "MediaTek September-2026 monthly revenue print, YoY",
+    "verdict": "READY",
+    "reasons": [],
+    "observable": {
+      "actual_key": "MEDIATEK.revenue_growth",
+      "source_of_actual": "manual:MediaTek September-2026 Taiwan monthly revenue print, YoY (~Oct 10 release)",
+      "period_pinned": {
+        "state": "OPERATOR-PINNED",
+        "period": null,
+        "why": "a manual route — the period IS named in the source text (checked, not assumed) and the operator enters the figure; no automatic period can drift"
+      },
+      "data_exists": {
+        "state": "AVAILABLE",
+        "why": "operator-entered in jobA-20260726T115635Z-C11_manual.json"
+      },
+      "kind_matches": {
+        "state": "OK",
+        "why": "source kind not assertable vs RATIO metric; fetched 0.0196 — consistent"
+      },
+      "value": 0.0196,
+      "state": "READY"
+    },
+    "fails_if": {
+      "actual_key": "MEDIATEK.revenue_growth",
+      "source_of_actual": "manual:MediaTek September-2026 Taiwan monthly revenue print, YoY (~Oct 10 release)",
+      "period_pinned": {
+        "state": "OPERATOR-PINNED",
+        "period": null,
+        "why": "a manual route — the period IS named in the source text (checked, not assumed) and the operator enters the figure; no automatic period can drift"
+      },
+      "data_exists": {
+        "state": "AVAILABLE",
+        "why": "operator-entered in jobA-20260726T115635Z-C11_manual.json"
+      },
+      "kind_matches": {
+        "state": "OK",
+        "why": "source kind not assertable vs RATIO metric; fetched 0.0196 — consistent"
+      },
+      "value": 0.0196,
+      "state": "READY"
+    },
+    "grading_basis": {
+      "state": "SPECIFIED",
+      "why": "MediaTek net revenue for SEPTEMBER 2026, YoY vs September 2025 · period 2026-09 · TWD (currency-immune) · Taiwan MOPS monthly revenue announcement table [yoy_pct] · 3 stated limitation(s)",
+      "manual_route": true,
+      "basis": {
+        "route": "manual",
+        "operator_confirmation_required": false,
+        "period": {
+          "resolved": "2026-09",
+          "measured": "MediaTek net revenue for SEPTEMBER 2026, YoY vs September 2025",
+          "rule": "the same rule as C8, reaching the OPPOSITE answer because this claim names a different release date: the source text says '~Oct 10 release', and the print released 2026-10-10 carries SEPTEMBER 2026 revenue. Here the named month IS the revenue month.",
+          "evidence": [
+            "The source text and the operator's seal note both say '~Oct 10 2026' and the note states the reasoning outright: 'released ~Oct 10 2026, resolvable before as_of 2026-10-31'.",
+            "FEASIBILITY: as_of is 2026-10-31, which leaves 21 days after the ~2026-10-10 release. Consistent.",
+            "This claim is why the C8 ruling is a READING and not a house convention: the identical phrase means different months in the two claims, and only each claim's own stated release date tells them apart."
+          ]
+        },
+        "currency": {
+          "code": "TWD",
+          "immune": true,
+          "basis": "New Taiwan Dollars on both sides, and consistent by construction — MediaTek's wall entry is the LOCAL Taipei listing (2454.TW), so its price (3750 TWD), its EPS estimate and its revenue estimate are all NT$, and MOPS is NT$.",
+          "evidence": "CONFIRMED 2026-08-11: the wall's MEDIATEK 0q revenue avg 146,681,949,550 with growth -0.024500001 implies a year-ago quarter of 150,365,914,608; MOPS Q2-2025 (ROC 114 months 4/5/6) sums to NT$150,368,571,000 — ratio 1.0000. A locally-listed ticker is all-local; the mixed-currency trap is an ADR phenomenon."
+        },
+        "source": {
+          "name": "Taiwan MOPS monthly revenue announcement table",
+          "url": "https://mopsov.twse.com.tw/nas/t21/sii/t21sc03_115_9_0.html",
+          "url_rule": "t21sc03_<ROC year>_<month>_0.html, indexed by the REVENUE month; September 2026 is 115_9",
+          "row": "stock code 2454",
+          "field": "yoy_pct",
+          "unit_handling": "percentage -> stored as a fraction (X4 convention); the claim's unit is 'x' and its thresholds (+0.05 / -0.0245) are already fractions."
+        },
+        "limitations": [
+          "STALE ANCHOR, stated not fixed: the fails_if threshold -0.0245 is the cited wall revenue_estimate.0q.growth, and that 0q is **Q2-2026** — CONFIRMED by its year-ago base matching MOPS Q2-2025 to 1.8e-5. Q2-2026 had already ENDED (2026-06-30) before the measured month (September 2026) began. The claim therefore tests a September monthly print against a consensus describing a quarter that closed three months earlier. The threshold is what it is and grades as written; a reader should know it is not a live consensus for the measured period.",
+          "WHY THE 0q POINTER DIFFERS FROM C8's: Yahoo's '0q' means the next UNREPORTED quarter at snapshot time. At the 2026-07-25 snapshot TSMC had already reported Q2-2026 (so its 0q was Q3-2026) while MediaTek had not (so its 0q was still Q2-2026). Two claims citing 'the same wall field class' are therefore citing different quarters. This is a property of the snapshot, discovered this session; see DEBT C30.",
+          "GRANULARITY: a monthly print graded against a quarterly consensus, as in C8."
+        ],
+        "ruled_utc": "2026-08-11",
+        "ruled_in": "P-G45 (C29 audit)"
+      }
+    },
+    "wall_currency": {
+      "fields": [
+        {
+          "ticker": "MEDIATEK",
+          "field": "revenue_estimate.0q.growth",
+          "block": "revenue_estimate",
+          "currency": "TWD",
+          "state": "OK",
+          "why": "MEDIATEK.revenue_estimate.0q.growth is denominated in TWD (level (.avg/.low/.high); the .growth leaf is a dimensionless RATE whose BASIS is this currency; the filer's reporting currency — NOT the quote currency)"
+        }
+      ],
+      "unanswered": [],
+      "state": "OK",
+      "why": "every cited wall field's currency is stated in the sidecar"
+    },
+    "checked_utc": "2026-11-11T09:51:50Z"
+  },
+  "resolution_sha256": "90a226b0e51f7d9fa95c56e791ce04bfc92527c1a41d9878ab0701b54c025a44",
+  "xpost_draft": "ADF v1 resolution — jobA-20260726T115635Z-C11: DISCONFIRM\nMediaTek September-2026 monthly revenue print, YoY >= 0.05 x | actual 0.0196 as of 2026-10-31\nres-sha256 90a226b0e51f7d9f  #ADF"
+}

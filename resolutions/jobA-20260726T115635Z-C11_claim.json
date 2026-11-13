@@ -1,0 +1,47 @@
+{
+  "claim_id": "jobA-20260726T115635Z-C11",
+  "epoch": "v1",
+  "tag": "ALPHA",
+  "address": {
+    "nodes": [
+      "TSM",
+      "MEDIATEK"
+    ],
+    "edges": [],
+    "subgraph": null
+  },
+  "statement": "A TSM->MEDIATEK leading-edge foundry edge exists; MediaTek is a major TSM customer yet sits fully unwired in the graph.",
+  "cited_wall": [
+    {
+      "ticker": "MEDIATEK",
+      "field": "revenue_estimate.0q.growth",
+      "value": -0.0245,
+      "relation": "deviates_from"
+    }
+  ],
+  "observable": {
+    "metric": "MediaTek September-2026 monthly revenue print, YoY",
+    "actual_key": "MEDIATEK.revenue_growth",
+    "source_of_actual": "manual:MediaTek September-2026 Taiwan monthly revenue print, YoY (~Oct 10 release)",
+    "comparator": ">=",
+    "threshold": 0.05,
+    "unit": "x",
+    "as_of_date": "2026-10-31"
+  },
+  "fails_if": {
+    "metric": "MediaTek September-2026 monthly revenue print, YoY",
+    "actual_key": "MEDIATEK.revenue_growth",
+    "source_of_actual": "manual:MediaTek September-2026 Taiwan monthly revenue print, YoY (~Oct 10 release)",
+    "comparator": "<=",
+    "threshold": -0.0245,
+    "unit": "x",
+    "as_of_date": "2026-10-31"
+  },
+  "window": [
+    1
+  ],
+  "mode": "job_a_epoch",
+  "created_utc": "2026-07-26T11:56:35Z",
+  "sealed_commit": "e4ae899ef16bfc8aa02cb0614260015bcd014559",
+  "note": "Day-17e operator stamp (KEEP -> pending). Observable re-pinned to the concrete measurable: MediaTek's September-2026 Taiwan monthly revenue print (YoY), released ~Oct 10 2026, resolvable before as_of 2026-10-31. Thresholds unchanged (>= +0.05 confirms; <= -0.0245 [the cited 0q consensus] fails). Thesis/address/cited_wall immutable."
+}

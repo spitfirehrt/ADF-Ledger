@@ -1,0 +1,44 @@
+{
+  "MEDIATEK.revenue_growth": 0.0196,
+  "provenance": {
+    "_doc": "Assisted actual (DEBT C21). The machine fetched and parsed; the OPERATOR attested that the stored value matches the published source. Grading is unchanged and mechanical — match.py reads the actual_key values above.",
+    "tool": "tools/assist_actual.py",
+    "claim_id": "jobA-20260726T115635Z-C11",
+    "written_utc": "2026-11-11T09:48:55Z",
+    "operator_attested": true,
+    "entries": {
+      "MEDIATEK.revenue_growth": {
+        "value": 0.0196,
+        "url": "https://mopsov.twse.com.tw/nas/t21/sii/t21sc03_115_9_0.html",
+        "snippet": "stock_code=2454 | name=聯發科 | revenue_month=55,399,497 | revenue_prev_month=64,183,361 | revenue_year_ago_month=54,330,057 | mom_pct=-13.68 | yoy_pct=1.96 | revenue_cumulative=469,390,909 | revenue_cumulative_year_ago=445,777,672 | cumulative_yoy_pct=5.29 | note=海外子公司之營收係以當月平均匯率換算之",
+        "fetched_utc": "2026-11-11T09:48:43Z",
+        "source_of_actual": "manual:MediaTek September-2026 Taiwan monthly revenue print, YoY (~Oct 10 release)",
+        "metric": "MediaTek September-2026 monthly revenue print, YoY",
+        "unit": "x",
+        "route": "twse_mops",
+        "machine_parsed": true,
+        "parsed_value": 0.0196,
+        "parsed_display": "1.96",
+        "parse_note": "one row for 2454",
+        "corrected": false,
+        "operator_attested": true,
+        "attested_utc": "2026-11-11T09:48:55Z",
+        "value_note": "published 1.96% -> stored 0.0196 (FRACTION convention, unit 'x')",
+        "grading_basis": {
+          "state": "SPECIFIED",
+          "period": "2026-09",
+          "currency": "TWD",
+          "currency_immune": true,
+          "source_field": "yoy_pct",
+          "limitations": [
+            "STALE ANCHOR, stated not fixed: the fails_if threshold -0.0245 is the cited wall revenue_estimate.0q.growth, and that 0q is **Q2-2026** — CONFIRMED by its year-ago base matching MOPS Q2-2025 to 1.8e-5. Q2-2026 had already ENDED (2026-06-30) before the measured month (September 2026) began. The claim therefore tests a September monthly print against a consensus describing a quarter that closed three months earlier. The threshold is what it is and grades as written; a reader should know it is not a live consensus for the measured period.",
+            "WHY THE 0q POINTER DIFFERS FROM C8's: Yahoo's '0q' means the next UNREPORTED quarter at snapshot time. At the 2026-07-25 snapshot TSMC had already reported Q2-2026 (so its 0q was Q3-2026) while MediaTek had not (so its 0q was still Q2-2026). Two claims citing 'the same wall field class' are therefore citing different quarters. This is a property of the snapshot, discovered this session; see DEBT C30.",
+            "GRANULARITY: a monthly print graded against a quarterly consensus, as in C8."
+          ],
+          "amendments": [],
+          "ruled_in": "P-G45 (C29 audit)"
+        }
+      }
+    }
+  }
+}

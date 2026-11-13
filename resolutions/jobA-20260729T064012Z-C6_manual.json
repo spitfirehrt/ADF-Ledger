@@ -1,0 +1,62 @@
+{
+  "AMKR.revenue_growth": 0.255773,
+  "provenance": {
+    "_doc": "Assisted actual (DEBT C21). The machine fetched and parsed; the OPERATOR attested that the stored value matches the published source. Grading is unchanged and mechanical — match.py reads the actual_key values above.",
+    "tool": "tools/assist_actual.py",
+    "claim_id": "jobA-20260729T064012Z-C6",
+    "written_utc": "2026-11-11T09:51:43Z",
+    "operator_attested": true,
+    "entries": {
+      "AMKR.revenue_growth": {
+        "value": 0.255773,
+        "url": "https://www.sec.gov/Archives/edgar/data/1047127/000104712726000043/amkr6302026erex-991.htm",
+        "snippet": "",
+        "fetched_utc": "2026-11-11T09:51:43Z",
+        "source_of_actual": "edgar:AMKR:Revenues",
+        "metric": "AMKR quarterly revenue YoY growth",
+        "unit": "%",
+        "route": "page",
+        "machine_parsed": false,
+        "parsed_value": null,
+        "parsed_display": null,
+        "parse_note": "no percentage figure found near any of ['growth', 'revenue', 'year-over-year', 'year over year', 'yoy', 'compared with', 'compared to'] — the page may be client-rendered, or phrase the figure differently",
+        "corrected": false,
+        "operator_attested": true,
+        "attested_utc": "2026-11-11T09:51:43Z",
+        "value_note": "operator-entered",
+        "grading_basis": {
+          "state": "SPECIFIED",
+          "period": "2026Q2 (the quarter ending 2026-06-30) — operator-confirmed 2026-08-12",
+          "currency": "USD",
+          "currency_immune": true,
+          "source_field": "standalone-quarter revenue for the ruled quarter and its year-ago quarter; the graded number is the YoY growth between them",
+          "limitations": [
+            "LOOK-BACK RISK (DEBT D7, which is OPEN): under the adopted reading the measured quarter ends 2026-06-30 and Amkor reports it in early August 2026 — about a week AFTER the 2026-07-29 seal. The claim was a genuine forecast when sealed, which is the property pre-registration actually requires, but the margin was days rather than months. As of 2026-08-11 the quarter is not yet in SEC companyfacts (latest standalone quarter there is 2026-01-01..2026-03-31), so nothing has been graded against a public figure.",
+            "This is the weakest-specified claim in the sealed set and the audit says so plainly: no period, no note, a legacy source scheme. It is recorded here rather than repaired, because the seal is the seal."
+          ],
+          "amendments": [
+            {
+              "amended_utc": "2026-08-13",
+              "amended_in": "P-G51",
+              "amends": "limitations[0] — LOOK-BACK RISK (DEBT D7, which is OPEN)",
+              "text": "the look-back limitation stands as a recorded fact about this claim (measured quarter reported days after seal); the guard class is closed (D7/V14).",
+              "why": "The limitation's parenthetical said D7 was OPEN. That was true when it was written on 2026-08-11 and is false now: D7 closed 2026-08-12 in c9ddb0f (P-G49), which shipped the V14 look-back guard. A reader meeting the limitation at this claim's 2026-10-31 resolution would read the present tense and conclude the class is still unguarded.",
+              "what_this_does_NOT_change": "the limitation itself is NOT waived, softened or rewritten. The measured quarter (ending 2026-06-30) really did report days after the 2026-07-29 seal, and that proximity publishes with the resolution exactly as recorded. Only the claim about the DEBT item's status is corrected. Note also that V14 is a DRAFT-time rule keyed off sealed_commit, so it could not and does not apply retroactively to this sealed claim — the guard prevents the next one, it does not re-grade this one.",
+              "append_only_note": "limitations[0] is left byte-identical on purpose. A recorded ruling is amended by adding a dated entry beside it, never by editing the sentence a reader may already have seen (CLAUDE.md rule 2)."
+            },
+            {
+              "amended_utc": "2026-11-11",
+              "amended_in": "P-G80",
+              "amends": "limitations[0] (LOOK-BACK RISK), period.evidence[1], and the P-G51 amendment's 'really did report days after the 2026-07-29 seal' — all three say Q2-2026 was reported AFTER the seal. It was reported BEFORE.",
+              "text": "CAVEAT — NOT A FORECAST AT SEAL TIME. Amkor published Q2-2026 results ~34.5 hours BEFORE this claim was created (2026-07-29T06:40:12Z): the earnings 8-K (Item 2.02, Ex. 99.1, accession 0001047127-26-000043) was accepted by EDGAR 2026-07-27T20:08:09Z, headlined 'Net sales $1.90 billion, up 26% year-on-year'; the 10-Q (0001047127-26-000046) followed 2026-07-28T19:36:50Z. The graded figure (1,897,965 / 1,511,392 USD thousands - 1 = 0.255773) was therefore PUBLIC when the claim was drafted. The claim grades as written, and that grade publishes — but it is a postdiction against a public number, not a forward test, and a reader must not count it as forecasting evidence in either direction.",
+              "why": "The 2026-08-11 limitation assumed 'Amkor reports Q2 in early August' and the 2026-08-11 companyfacts probe saw no Q2 standalone fact; both were inferences, not a check of the filing record. EDGAR submissions (checked 2026-11-11, at resolution) show the 8-K and 10-Q acceptance timestamps above. Publishing the resolution with a limitation that says the opposite of the filing record would put a false statement under the verdict.",
+              "what_this_does_NOT_change": "The period reading (Q2-2026, operator-confirmed P-G46) is NOT reopened: it follows from the `deviates_from` relation to the cited consensus, which is independent of when the quarter reported. The verdict is NOT waived or re-graded. limitations[0], period.evidence[1] and the P-G51 amendment are left byte-identical. Whether the drafting model had this figure in its context is NOT established here — only that it was public.",
+              "append_only_note": "Appended beside the statements it corrects, per the P-G51 precedent (CLAUDE.md rule 2). Recorded BEFORE the actual was attested so the caveat rides into resolutions/<cid>_manual.json's grading_basis.amendments and the published resolution."
+            }
+          ],
+          "ruled_in": "P-G45 (C29 audit — NEW finding, this claim was not in the brief's manual list)"
+        }
+      }
+    }
+  }
+}

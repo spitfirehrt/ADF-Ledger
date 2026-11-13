@@ -1,0 +1,13 @@
+{
+  "claim_id": "jobA-20260726T115635Z-C11",
+  "epoch": "v1",
+  "fetched_utc": "2026-11-11T09:51:50Z",
+  "actuals": {
+    "MEDIATEK.revenue_growth": {
+      "value": 0.0196,
+      "source": "manual:jobA-20260726T115635Z-C11_manual.json",
+      "fetched_utc": "2026-11-11T09:51:50Z",
+      "note": null
+    }
+  }
+}

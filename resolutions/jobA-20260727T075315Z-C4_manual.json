@@ -1,0 +1,43 @@
+{
+  "MU.gross_margin": 0.868,
+  "provenance": {
+    "_doc": "Assisted actual (DEBT C21). The machine fetched and parsed; the OPERATOR attested that the stored value matches the published source. Grading is unchanged and mechanical — match.py reads the actual_key values above.",
+    "tool": "tools/assist_actual.py",
+    "claim_id": "jobA-20260727T075315Z-C4",
+    "written_utc": "2026-11-11T09:48:59Z",
+    "operator_attested": true,
+    "entries": {
+      "MU.gross_margin": {
+        "value": 0.868,
+        "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000018/a2026q4ex991-pressrelease.htm",
+        "snippet": "llions, except per share amounts) GAAP (1) Non-GAAP (2) FQ4-26 FQ3-26 FQ4-25 FQ4-26 FQ3-26 FQ4-25 Revenue $ 54,229 $ 41,456 $ 11,315 $ 54,229 $ 41,456 $ 11,315 Gross margin 47,047 35,056 5,054 47,204 35,199 5,169 Percent of revenue 86.8 % 84.6 % 44.7 % 87.0 % 84.9 % 45.7 % Operating expenses 3,296 1,738 1,400 2,568 1,518 1,214 Operating income 43,751 33,318 3,654 44,636 33,681 3,955 Percen",
+        "fetched_utc": "2026-11-11T09:48:59Z",
+        "source_of_actual": "manual:MU GAAP consolidated gross margin, fiscal Q4 FY2026, from the earnings release (~late Sept 2026)",
+        "metric": "MU GAAP consolidated gross margin, fiscal Q4 FY2026 (earnings release, ~late Sept 2026)",
+        "unit": "%",
+        "route": "page",
+        "machine_parsed": false,
+        "parsed_value": null,
+        "parsed_display": null,
+        "parse_note": "82 candidate figures that DISAGREE ([0.3, 20.0, 25.0, 26.1, 29.0, 31.0, 36.0, 39.8, 40.9, 41.0, 44.7, 45.7, 48.0, 59.0, 74.6, 75.0, 76.0, 78.0, 79.0, 80.7, 81.1, 83.0, 84.0, 84.6, 84.9, 85.0, 85.95, 86.0, 86.25, 86.8, 87.0, 88.0, 90.0, 5169.0, 10846.0, 15286.0]) — refusing to pick one",
+        "corrected": false,
+        "operator_attested": true,
+        "attested_utc": "2026-11-11T09:48:59Z",
+        "value_note": "operator-entered",
+        "grading_basis": {
+          "state": "SPECIFIED",
+          "period": "MU fiscal Q4 FY2026",
+          "currency": "USD",
+          "currency_immune": true,
+          "source_field": "GAAP gross margin, consolidated (NOT the non-GAAP figure the release also prints)",
+          "limitations": [
+            "GAAP vs non-GAAP is the live trap on this one: Micron's release prints both, they differ materially, and the claim says GAAP. The basis names the field so the operator attests to the right line.",
+            "The cited wall value (MU.revenue_estimate.0q.growth = 3.4931) is a known yfinance artifact, already documented honestly in the sealed claim's own note. It is not the graded quantity — the observable is gross margin — so it cannot affect the verdict."
+          ],
+          "amendments": [],
+          "ruled_in": "P-G45 (C29 audit)"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "claim_id": "jobA-20260727T075315Z-C4",
+  "epoch": "v1",
+  "verdict": "DISCONFIRM",
+  "reason": "fails_if fired (pre-committed disconfirmation met)",
+  "notes": [],
+  "evaluated_utc": "2026-11-11T09:51:51Z",
+  "sealed_commit": "00985f4a1922b05b1a5d35b29e787408529abe4f",
+  "observable_eval": {
+    "actual_key": "MU.gross_margin",
+    "actual_value": 0.868,
+    "comparator": "<=",
+    "threshold": 0.55,
+    "result": false
+  },
+  "fails_if_eval": {
+    "actual_key": "MU.gross_margin",
+    "actual_value": 0.868,
+    "comparator": ">=",
+    "threshold": 0.6,
+    "result": true
+  },
+  "actuals_ref": "jobA-20260727T075315Z-C4_actuals.json",
+  "as_of_date": "2026-10-31",
+  "graded_period": {
+    "observable": {
+      "actual_key": "MU.gross_margin",
+      "source_of_actual": "manual:MU GAAP consolidated gross margin, fiscal Q4 FY2026, from the earnings release (~late Sept 2026)",
+      "period_graded": "operator-entered value for the period named in the source text, as of 2026-10-31",
+      "prior_period": null,
+      "pinned": true,
+      "detail": "manual:jobA-20260727T075315Z-C4_manual.json"
+    },
+    "fails_if": {
+      "actual_key": "MU.gross_margin",
+      "source_of_actual": "manual:MU GAAP consolidated gross margin, fiscal Q4 FY2026, from the earnings release (~late Sept 2026)",
+      "period_graded": "operator-entered value for the period named in the source text, as of 2026-10-31",
+      "prior_period": null,
+      "pinned": true,
+      "detail": "manual:jobA-20260727T075315Z-C4_manual.json"
+    }
+  },
+  "preflight": {
+    "claim_id": "jobA-20260727T075315Z-C4",
+    "ledger": "live",
+    "as_of_date": "2026-10-31",
+    "metric": "MU GAAP consolidated gross margin, fiscal Q4 FY2026 (earnings release, ~late Sept 2026)",
+    "verdict": "READY",
+    "reasons": [],
+    "observable": {
+      "actual_key": "MU.gross_margin",
+      "source_of_actual": "manual:MU GAAP consolidated gross margin, fiscal Q4 FY2026, from the earnings release (~late Sept 2026)",
+      "period_pinned": {
+        "state": "OPERATOR-PINNED",
+        "period": null,
+        "why": "a manual route — the period IS named in the source text (checked, not assumed) and the operator enters the figure; no automatic period can drift"
+      },
+      "data_exists": {
+        "state": "AVAILABLE",
+        "why": "operator-entered in jobA-20260727T075315Z-C4_manual.json"
+      },
+      "kind_matches": {
+        "state": "OK",
+        "why": "source kind not assertable vs RATIO metric; fetched 0.868 — consistent"
+      },
+      "value": 0.868,
+      "state": "READY"
+    },
+    "fails_if": {
+      "actual_key": "MU.gross_margin",
+      "source_of_actual": "manual:MU GAAP consolidated gross margin, fiscal Q4 FY2026, from the earnings release (~late Sept 2026)",
+      "period_pinned": {
+        "state": "OPERATOR-PINNED",
+        "period": null,
+        "why": "a manual route — the period IS named in the source text (checked, not assumed) and the operator enters the figure; no automatic period can drift"
+      },
+      "data_exists": {
+        "state": "AVAILABLE",
+        "why": "operator-entered in jobA-20260727T075315Z-C4_manual.json"
+      },
+      "kind_matches": {
+        "state": "OK",
+        "why": "source kind not assertable vs RATIO metric; fetched 0.868 — consistent"
+      },
+      "value": 0.868,
+      "state": "READY"
+    },
+    "grading_basis": {
+      "state": "SPECIFIED",
+      "why": "Micron GAAP consolidated gross margin for fiscal Q4 FY2026 · period MU fiscal Q4 FY2026 · USD (currency-immune) · Micron quarterly earnings release (GAAP consolidated gross margin) [GAAP gross margin, consolidated (NOT the non-GAAP figure the release also prints)] · 2 stated limitation(s)",
+      "manual_route": true,
+      "basis": {
+        "route": "manual",
+        "operator_confirmation_required": false,
+        "period": {
+          "resolved": "MU fiscal Q4 FY2026",
+          "measured": "Micron GAAP consolidated gross margin for fiscal Q4 FY2026",
+          "rule": "named explicitly and unambiguously in the claim text ('fiscal Q4 FY2026, from the earnings release (~late Sept 2026)'). No reading is required.",
+          "evidence": [
+            "FEASIBILITY: the release is ~late September 2026 and as_of is 2026-10-31 — roughly five weeks of margin.",
+            "The wall's MU 0q year-ago base (avg 50,838,974,970 / 4.4931 = 11,314,899,506) corresponds to MU's fiscal Q4 FY2025 revenue, so the wall's 0q pointer and the claim's stated period agree."
+          ]
+        },
+        "currency": {
+          "code": "USD",
+          "immune": true,
+          "basis": "IMMUNE BY CONSTRUCTION: a gross margin is a ratio of two figures in the same currency, so it is dimensionless and no FX can move it. Micron reports in USD in any case, and its wall entry is a US listing (price 920.95 USD)."
+        },
+        "source": {
+          "name": "Micron quarterly earnings release (GAAP consolidated gross margin)",
+          "url": null,
+          "url_rule": "operator supplies the release URL via `assist_actual --url` — Micron's IR release is not on a stable pre-derivable path the way a MOPS table is",
+          "field": "GAAP gross margin, consolidated (NOT the non-GAAP figure the release also prints)",
+          "unit_handling": "a percentage in the release -> stored as a fraction; the thresholds (<=0.55 / >=0.60) are fractions."
+        },
+        "limitations": [
+          "GAAP vs non-GAAP is the live trap on this one: Micron's release prints both, they differ materially, and the claim says GAAP. The basis names the field so the operator attests to the right line.",
+          "The cited wall value (MU.revenue_estimate.0q.growth = 3.4931) is a known yfinance artifact, already documented honestly in the sealed claim's own note. It is not the graded quantity — the observable is gross margin — so it cannot affect the verdict."
+        ],
+        "ruled_utc": "2026-08-11",
+        "ruled_in": "P-G45 (C29 audit)"
+      }
+    },
+    "wall_currency": {
+      "fields": [
+        {
+          "ticker": "MU",
+          "field": "revenue_estimate.0q.growth",
+          "block": "revenue_estimate",
+          "currency": "USD",
+          "state": "OK",
+          "why": "MU.revenue_estimate.0q.growth is denominated in USD (level (.avg/.low/.high); the .growth leaf is a dimensionless RATE whose BASIS is this currency; the filer's reporting currency — NOT the quote currency)"
+        }
+      ],
+      "unanswered": [],
+      "state": "OK",
+      "why": "every cited wall field's currency is stated in the sidecar"
+    },
+    "checked_utc": "2026-11-11T09:51:50Z"
+  },
+  "resolution_sha256": "56f889271ae72ff5a19a0a4a5ce8c0caeb56eb80947110d8e3aeb83b04461d20",
+  "xpost_draft": "ADF v1 resolution — jobA-20260727T075315Z-C4: DISCONFIRM\nMU GAAP consolidated gross margin, fiscal Q4 FY2026 (earnings release, ~late Sept 2026) <= 0.55 % | actual 0.868 as of 2026-10-31\nres-sha256 56f889271ae72ff5  #ADF"
+}

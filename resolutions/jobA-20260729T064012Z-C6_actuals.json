@@ -1,0 +1,13 @@
+{
+  "claim_id": "jobA-20260729T064012Z-C6",
+  "epoch": "v1",
+  "fetched_utc": "2026-11-11T09:51:51Z",
+  "actuals": {
+    "AMKR.revenue_growth": {
+      "value": 0.255773,
+      "source": "manual:jobA-20260729T064012Z-C6_manual.json (edgar-cited)",
+      "fetched_utc": "2026-11-11T09:51:51Z",
+      "note": null
+    }
+  }
+}
