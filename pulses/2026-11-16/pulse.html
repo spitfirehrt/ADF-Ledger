@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ADF · Live record — 2026-11-16</title>
+<style>/* ============================================================================
+   ADF DESIGN SYSTEM  —  v4.1  EDITORIAL block dashboard (dark cards on cream).
+   SOURCE OF TRUTH for every ADF surface. Governed by docs/DESIGN-SPEC.md. Inlined
+   into each surface at render time (self-contained; works from file://).
+
+   Skin from the operator's reference reports (docs/design-research/*.html): warm
+   paper canvas, black header band, hairline vertical COLUMN-RULE texture, serif
+   display for masthead + section heads, sans for block content, mono for data, ONE
+   deep-red accent. The blocks are DARK ink-on-black cards on the cream canvas (as the
+   reference's data cards are), rounded, with light text and brightened accents; a
+   left stripe reads tag (alpha vs calibration), the days figure reads proximity.
+   Structure is the v4 block dashboard (state strip -> tile wall -> region band ->
+   footer; click-to-expand; full data density).
+   ============================================================================ */
+
+:root{
+  /* cream chrome (canvas, section heads, footer) */
+  --paper:#f0ece3;           /* warm cream canvas + light text on dark cards */
+  --ink:#1c1a14;             /* near-black — section heads, footer */
+  --header:#0f0d09;          /* black header band */
+  --ink-2:#6f6656;           /* secondary on cream */
+  --faint:#9a9080;           /* metadata on cream */
+  --line:#d6cbb4;            /* hairline on cream */
+  --line-2:#b8ac8f;          /* stronger hairline on cream */
+
+  /* dark cards */
+  --card:#16120b;            /* block fill (dark) */
+  --card-2:#201a11;          /* hover / expanded */
+  --card-2c:#b6ac96;         /* secondary text on dark cards */
+
+  /* accents — brightened for legibility on black */
+  --accent:#8b1a1a;          /* deep red for cream-context links */
+  --alert:#cc2f26;           /* bright red — mark, key numbers, alpha, near, live shock */
+  --slate:#8a9bac;           /* calibration / mid-proximity (light slate on dark) */
+  --gold:#c9922a;            /* watches — warming */
+  --confirm:#4aaa6a;         /* verdict confirm (bright on dark) */
+  --miss:#d1554a;            /* verdict miss (equal weight) */
+
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,"Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+}
+
+*{ box-sizing:border-box; }
+html{ background:var(--paper); }
+body{ margin:0; padding:0; color:var(--ink);
+  font-family:var(--sans); font-size:14px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:repeating-linear-gradient(90deg, transparent 0, transparent 59px, rgba(28,26,20,0.05) 59px, rgba(28,26,20,0.05) 60px);
+}
+.mono{ font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:0; }
+a{ color:var(--accent); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+.dash{ max-width:1560px; margin:0 auto; padding:16px 18px 26px; }
+
+/* ---- header: BLACK band, serif mark, whole-state strip ---------------------- */
+.top{ display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  background:var(--header); color:var(--paper);
+  border-bottom:3px solid var(--alert); padding:14px 18px; border-radius:10px 10px 0 0; }
+.brand{ font-family:var(--serif); font-size:20px; font-weight:700; letter-spacing:.01em; }
+.brand span{ color:var(--alert); }
+.dry{ font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--paper); border:1px solid var(--alert); padding:2px 8px; border-radius:4px; }
+.sums{ display:flex; gap:18px; flex-wrap:wrap; margin-left:auto; }
+.sum{ font-family:var(--mono); font-size:12px; color:rgba(240,236,227,0.72); white-space:nowrap; }
+.sum b{ color:var(--paper); font-weight:600; }
+.sum.hot b{ color:var(--alert); }
+.meta{ font-family:var(--mono); font-size:11px; color:rgba(240,236,227,0.5); white-space:nowrap; }
+
+/* ---- region scaffold: SERIF display heads (ink on cream) ------------------ */
+.region{ margin-top:22px; }
+.region > h2, .col > h2{ font-family:var(--serif); font-size:19px; font-weight:700; color:var(--ink);
+  margin:0 0 12px; display:flex; gap:10px; align-items:baseline; border-bottom:1px solid var(--line-2); padding-bottom:6px; }
+.region > h2 .c, .col > h2 .c{ font-family:var(--mono); font-size:11px; font-weight:400; color:var(--ink-2); letter-spacing:.02em; }
+
+/* ---- open positions: ROUNDED DARK cards ----------------------------------- */
+.wall{ display:grid; grid-template-columns:repeat(auto-fill,minmax(212px,1fr)); gap:12px; }
+.tile{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-radius:12px;
+  padding:15px 16px 16px; cursor:pointer; position:relative; }
+.tile:hover{ background:var(--card-2); }
+.tile.alpha{ border-left:4px solid var(--alert); }        /* left stripe = tag */
+.tile.cal{ border-left:4px solid var(--slate); }
+.tile .hdr{ display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.tile .tk{ font-family:var(--sans); font-size:24px; font-weight:700; letter-spacing:-0.015em; line-height:1; color:var(--paper); }
+.tag-chip{ font-family:var(--sans); font-size:11.5px; font-weight:600; letter-spacing:.01em;
+  padding:3px 10px; border-radius:999px; border:1px solid; white-space:nowrap; }
+.tag-chip.alpha{ color:var(--alert); border-color:rgba(204,47,38,0.5); background:rgba(204,47,38,0.12); }
+.tag-chip.cal{ color:var(--slate); border-color:rgba(138,155,172,0.45); background:rgba(138,155,172,0.12); }
+.tile .kind{ font-family:var(--sans); font-size:12.5px; color:var(--card-2c); margin-top:8px; }
+.tile .cond{ font-family:var(--mono); font-size:17px; font-weight:600; margin-top:13px; color:var(--paper); }
+.tile .days{ font-family:var(--mono); font-size:16px; font-weight:700; margin-top:13px; }
+.tile .days.near{ color:var(--alert); } .tile .days.mid{ color:var(--slate); } .tile .days.far{ color:var(--card-2c); }
+.tile .days small{ font-size:11px; font-weight:400; color:var(--faint); }
+.tile .next{ font-family:var(--sans); font-size:12.5px; color:var(--card-2c); margin-top:9px; line-height:1.45; }
+.tile .next b{ font-family:var(--mono); font-size:9.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--faint); margin-right:6px; }
+.tile .det{ display:none; margin-top:14px; padding-top:12px; border-top:1px solid rgba(240,236,227,0.14); }
+.tile.open{ background:var(--card-2); grid-column:span 2; }
+.tile.open .det{ display:block; }
+.det .kv{ display:grid; grid-template-columns:78px 1fr; gap:3px 10px; font-family:var(--mono); font-size:11px; }
+.det .kv dt{ color:var(--faint); }
+.det .kv dd{ margin:0; color:var(--card-2c); word-break:break-word; }
+.det .kv dd.on{ color:var(--paper); }
+
+/* ---- lower band: rounded DARK cards --------------------------------------- */
+.band{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:16px; margin-top:26px; }
+
+.wtile{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-left:4px solid var(--gold); border-radius:12px;
+  padding:14px 16px; margin-bottom:10px; cursor:pointer; }
+.wtile:hover{ background:var(--card-2); }
+.wtile .h{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+.wtile .wid{ font-family:var(--mono); font-size:12px; font-weight:600; color:var(--paper); }
+.wtile .st{ font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.02em; color:var(--gold); }
+.wtile .th{ font-family:var(--sans); font-size:14px; color:var(--paper); margin-top:8px; line-height:1.5; }
+.wtile .det{ display:none; margin-top:9px; padding-top:8px; border-top:1px solid rgba(240,236,227,0.14); font-size:13px; color:var(--card-2c); }
+.wtile.open .det{ display:block; }
+.wtile .m{ font-family:var(--mono); font-size:10.5px; color:var(--faint); margin-top:9px; }
+
+.trow{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-left:3px dashed rgba(240,236,227,0.28); border-radius:10px;
+  padding:11px 14px; margin-bottom:8px; }
+.trow .id{ font-family:var(--mono); font-size:10px; color:var(--faint); }
+.trow .t{ font-family:var(--sans); font-size:13.5px; color:var(--paper); margin-top:3px; line-height:1.45; }
+
+.state-tile{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.14); border-radius:12px; padding:16px 17px; }
+.state-tile .big{ font-family:var(--serif); font-size:16px; font-weight:700; color:var(--paper); }
+.state-tile .sub{ font-family:var(--sans); font-size:13px; color:var(--card-2c); margin-top:7px; line-height:1.5; }
+
+.shockrow{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-left:4px solid var(--alert); border-radius:10px; padding:11px 14px; margin-bottom:8px; }
+.shockrow .id{ font-family:var(--mono); font-size:10px; color:var(--faint); }
+.shockrow .t{ font-family:var(--sans); font-size:13px; color:var(--paper); margin-top:3px; }
+
+.res{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10); border-radius:10px; padding:12px 14px; margin-bottom:8px; display:flex; gap:12px; align-items:baseline; }
+.res.confirm{ border-left:4px solid var(--confirm); } .res.disconfirm{ border-left:4px solid var(--miss); } .res.unresolved{ border-left:4px solid var(--slate); }
+.verdict{ font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.04em; min-width:92px; }
+.verdict.confirm{ color:var(--confirm); } .verdict.disconfirm{ color:var(--miss); } .verdict.unresolved{ color:var(--slate); }
+.res .rx{ flex:1; font-family:var(--sans); font-size:13px; color:var(--paper); }
+.res .rm{ font-family:var(--mono); font-size:10px; color:var(--faint); white-space:nowrap; }
+
+/* ---- footer (ink on cream) ------------------------------------------------ */
+.foot{ margin-top:26px; border-top:2px solid var(--ink); padding-top:12px;
+  font-family:var(--mono); font-size:10.5px; color:var(--ink-2); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.foot .sha{ color:var(--ink); word-break:break-all; max-width:70%; }
+
+/* ---- MACHINE ASSESSMENT (v2 payload spec) --------------------------------
+   Visually SUBORDINATE to the sealed facts by design: smaller, muted, set off by
+   a rule and a label. A reader must be able to tell at a glance which numbers the
+   record is accountable for and which are a machine's current opinion. */
+.tile .asmt{ display:flex; align-items:baseline; gap:8px; margin-top:11px; padding-top:9px;
+  border-top:1px dashed rgba(240,236,227,0.16); font-family:var(--mono); font-size:11.5px; }
+.tile .asmt .pr{ font-weight:700; letter-spacing:.02em; color:var(--card-2c); text-transform:uppercase; font-size:10px; }
+.tile .asmt .pr.rising{ color:var(--alert); } .tile .asmt .pr.falling{ color:var(--slate); }
+.tile .asmt .pr.quiet{ color:var(--faint); }
+.tile .asmt .cf{ color:var(--paper); font-weight:600; }
+.tile .asmt .bang{ color:var(--alert); font-weight:700; }
+.tile .asmt.flagged{ border-top-color:var(--alert); }
+/* A flagged tile is marked with an editorial rule, not a shadow (DESIGN-SPEC v4.1
+   BANS box-shadow / glassmorphism — surfaces are print, not glass). */
+.tile.flag{ border-top:2px solid var(--alert); }
+.det-asmt{ margin-top:12px; padding-top:10px; border-top:1px dashed rgba(240,236,227,0.20); }
+.det-asmt .lbl{ font-family:var(--mono); font-size:9.5px; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--faint); margin-bottom:7px; }
+.det-asmt .lbl .sub{ font-weight:400; letter-spacing:.02em; text-transform:none; color:var(--faint); }
+.det-asmt .none{ font-family:var(--sans); font-size:12px; color:var(--faint); }
+.det-asmt .alert{ font-family:var(--sans); font-size:12px; color:var(--alert); margin-bottom:6px; }
+.det-asmt .ovr{ font-family:var(--sans); font-size:12px; color:var(--gold); margin-bottom:6px; }
+.det-asmt .ovr .was{ color:var(--faint); }
+.asmt-note{ color:var(--ink-2); }
+
+/* ---- CHECKPOINT OUTCOMES (S6) --------------------------------------------- */
+.cks{ display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:12px; }
+.ck{ background:var(--card); color:var(--paper); border:1px solid rgba(240,236,227,0.10);
+  border-left:4px solid var(--slate); border-radius:12px; padding:13px 15px; }
+.ck .h{ display:flex; align-items:baseline; gap:9px; }
+.ck .d{ font-family:var(--mono); font-size:11px; font-weight:700; color:var(--slate); white-space:nowrap; }
+.ck .ev{ font-family:var(--sans); font-size:13px; color:var(--paper); line-height:1.45; }
+.ck .cmp{ font-family:var(--mono); font-size:15px; font-weight:700; color:var(--paper); margin-top:10px; }
+.ck .cmp .vs{ font-family:var(--sans); font-size:11px; font-weight:400; color:var(--faint); margin:0 7px; }
+.ck .vd{ font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--gold); margin-top:7px; }
+.ck .m{ font-family:var(--mono); font-size:10px; color:var(--faint); margin-top:9px; line-height:1.5; }
+</style></head>
+<body>
+<div class="dash"><div class="top"><span class="brand"><span>ADF</span> · Live record</span><div class="sums"><span class="sum hot"><b>5</b> open</span><span class="sum"><b>5</b> alpha · <b>0</b> calibration</span><span class="sum"><b>0</b> watching</span><span class="sum"><b>3</b> tracked</span><span class="sum"><b>1</b> / <b>2</b> shocks</span><span class="sum"><b>3</b> resolved</span></div><span class="meta">epoch v1 · 2026-11-16T16:05:48Z</span></div><div class="region"><h2>Open positions <span class="c">5 graded · click a block for full detail · <span class="asmt-note">pressure · confidence is a machine assessment, not part of the sealed claim</span></span></h2><div class="wall"><div class="tile alpha flag"><div class="hdr"><div class="tk">QCOM</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">revenue · YoY</div><div class="cond">&gt; -6.68%</div><div class="days near">-1<small>d late</small></div><div class="asmt flagged" title="machine assessment — the sealed claim is unchanged"><span class="pr falling">falling</span><span class="cf">8%</span><span class="bang">!</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">QCOM-septq-rev-yoy-2026</dd><dt>address</dt><dd>QCOM <span style="color:var(--faint)">| SAMSUNG__QCOM__handset_socs,AAPL__QCOM__handset_modems</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>QCOM FY2026 Sept-quarter (fiscal Q4) revenue YoY growth  [&gt; -6.68%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Nov 15 (2026-11-15)</dd><dt>next</dt><dd> </dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><div class="alert">&#9888; low_confidence: confidence 8% &lt;= 10%</div><dl class="kv"><dt>case</dt><dd>Bernstein ‘lousy margin outlook’ plus handset-revenue downgrade pieces on AAPL__QCOM__handset_modems and SAMSUNG__QCOM__handset_socs; wall 0q growth already -11.7% sits below the &gt;-6.7% confirm line and near fails_if.</dd><dt>consensus</dt><dd>Street holds QCOM at hold with 0q revenue growth ~-11.7% as a structural handset decliner.</dd><dt>deviation</dt><dd>WEAKENING — downgrade tape and wall revision deepen the decline frame; no Samsung-SoC or price-hike offset printed.</dd><dt>synthesis</dt><dd>Cut conviction further on &gt;-6.7% Sept-Q; with as_of 2026-11-15 immediate, print risk is skewed to the fails_if side.</dd><dt>confidence</dt><dd>Prior 12 cut on handset downgrade salience and wall growth already under the confirm threshold with resolution days away.</dd><dt>trajectory</dt><dd>12% &rarr; 8% (-4 pts)</dd><dt>evidence</dt><dd><code>CBMiqgFBVV95cUxOZFJCTnl6dm5OZUppMX</code> <code>CBMixAFBVV95cUxNbkZydE5NRjFFbHRLdD</code></dd></dl></div></div></div><div class="tile alpha"><div class="hdr"><div class="tk">KLA</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">revenue · YoY</div><div class="cond">≥ +15%</div><div class="days near">-1<small>d late</small></div><div class="asmt" title="machine assessment — the sealed claim is unchanged"><span class="pr rising">rising</span><span class="cf">96%</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">jobA-20260729T064012Z-C5</dd><dt>address</dt><dd>KLA <span style="color:var(--faint)">| TSM__KLA__process_control</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>KLA September-2026 quarter revenue YoY growth (FY2027 Q1, quarter ending 2026-09-30)  [≥ +15%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Nov 15 (2026-11-15)</dd><dt>next</dt><dd> </dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><dl class="kv"><dt>case</dt><dd>KLA Q1 revenue beat with stronger outlook directly supports Sept-2026 YoY &gt;=0.15 on TSM__KLA__process_control; wall 0q growth ~0.43 already clears the sealed threshold.</dd><dt>consensus</dt><dd>Street rates KLA only buy (weakest equipment rating) with mean target implying modest upside vs peers’ strong_buy.</dd><dt>deviation</dt><dd>STRENGTHENING — beat-and-outlook print validates the TSM-concentration revenue tailwind the rating still under-prices.</dd><dt>synthesis</dt><dd>Treat &gt;=15% Sept-Q as confirmed; residual alpha is rating/multiple catch-up, not the revenue test.</dd><dt>confidence</dt><dd>Prior 95 held and nudged on explicit Q1 beat/stronger-outlook item plus wall growth far above 0.15 with as_of immediate.</dd><dt>trajectory</dt><dd>95% &rarr; 96% (+1 pts)</dd><dt>evidence</dt><dd><code>CBMixwFBVV95cUxOQVF0NXY0WUc2d1Z5U1</code></dd></dl></div></div></div><div class="tile alpha"><div class="hdr"><div class="tk">LRCX</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">revenue · YoY</div><div class="cond">≥ +31%</div><div class="days near">14<small>d</small></div><div class="asmt" title="machine assessment — the sealed claim is unchanged"><span class="pr quiet">quiet</span><span class="cf">14%</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">jobA-20260726T115635Z-C4</dd><dt>address</dt><dd>LRCX,ASX</dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>LRCX latest-quarter revenue YoY growth (beats the cited +29% consensus)  [≥ +31%]</dd><dt>window</dt><dd>[1]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Nov 30 (2026-11-30)</dd><dt>next</dt><dd> </dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><dl class="kv"><dt>case</dt><dd>Window LRCX items are IBM sub-1nm collab, Enschede PLD facility, export-reg comments and sector slides; ASX item is NT$705M facility engineering — none establish an LRCX→ASX advanced-packaging equipment supply path or move LRCX.rev_yoy vs 0.31.</dd><dt>consensus</dt><dd>Street has LRCX at strong_buy with 0q revenue growth ~0.62 and no priced LRCX–ASX packaging-tool edge.</dd><dt>deviation</dt><dd>UNCHANGED — claimed edge remains off-board and unlinked to the sealed revenue observable this window.</dd><dt>synthesis</dt><dd>Remain stood down on any LRCX–ASX edge trade; observable still unlinked to the claimed mechanism.</dd><dt>confidence</dt><dd>Prior 14 held: no rev_yoy print and no ASX-directed tool order to justify a move.</dd></dl></div></div></div><div class="tile alpha"><div class="hdr"><div class="tk">SKHYNIX</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">return spread</div><div class="cond">≤ -10%</div><div class="days near">45<small>d</small></div><div class="asmt" title="machine assessment — the sealed claim is unchanged"><span class="pr falling">falling</span><span class="cf">36%</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">HBM-zerosum-skhynix-spread-2026</dd><dt>address</dt><dd>MU,SKHYNIX,SAMSUNG <span style="color:var(--faint)">| MU__SKHYNIX__hbm_capacity,SKHYNIX__NVDA__hbm,SAMSUNG__NVDA__hbm</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>SKHYNIX total return minus mean total return of {MU, SAMSUNG}, seal date to 2026-12-31  [≤ -10%]</dd><dt>window</dt><dd>[2]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Dec 31 (2026-12-31)</dd><dt>next</dt><dd> </dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><dl class="kv"><dt>case</dt><dd>SK hynix locks 50%+ of 2027-28 HBM4 capacity and doubles Nvidia-related sales while Micron pauses its $4.5B Taiwan HBM plant along MU__SKHYNIX__hbm_capacity — zero-sum share runs toward SKHYNIX outperformance, opposite of spread &lt;= -0.1.</dd><dt>consensus</dt><dd>Street prices MU/SKHYNIX/SAMSUNG as a uniform AI-HBM rally (all strong_buy, triple-digit growth).</dd><dt>deviation</dt><dd>WEAKENING — capacity lock and MU plant pause show SKHYNIX taking share, not the underperformance the spread needs.</dd><dt>synthesis</dt><dd>Further dial back the SKHYNIX-underperform lean; window is SKHYNIX wallet extension versus MU pause, not SKHYNIX disappointment.</dd><dt>confidence</dt><dd>Prior 55 cut on HBM4 50%+ lock plus MU Taiwan pause, both push relative SKHYNIX total return the wrong way for &lt;= -0.1.</dd><dt>trajectory</dt><dd>55% &rarr; 36% (-19 pts)</dd><dt>evidence</dt><dd><code>CBMihAFBVV95cUxQNlRxRk9WMU4zRUJkaG</code> <code>CBMihgFBVV95cUxPTFV6em13cGpITmZ2VF</code> <code>CBMidkFVX3lxTE1XdGcyRHZYMWIydDFkR2</code> <code>CBMidkFVX3lxTE5MR3BXRFFBNHBpcmpvMW</code> <code>CBMigwFBVV95cUxPdjQtZWc0WE1neVJOan</code></dd></dl></div></div></div><div class="tile alpha flag"><div class="hdr"><div class="tk">AVGO</div><span class="tag-chip alpha">Alpha</span></div><div class="kind">gross margin</div><div class="cond">≤ $480</div><div class="days mid">76<small>d</small></div><div class="next"><b>Next</b>Dec 10 · Taiwan monthly print</div><div class="asmt flagged" title="machine assessment — the sealed claim is unchanged"><span class="pr falling">falling</span><span class="cf">4%</span><span class="bang">!</span></div><div class="det"><dl class="kv"><dt>id</dt><dd class="on">AVGO-wafer-hike-multiple-2027</dd><dt>address</dt><dd>AVGO,TSM <span style="color:var(--faint)">| TSM__AVGO__foundry_wafers</span></dd><dt>tag</dt><dd class="on">ALPHA · graded (ALPHA confirm-rate)</dd><dt>observable</dt><dd>AVGO share price (multiple/margin compression)  [≤ $480]</dd><dt>window</dt><dd>[2]</dd><dt>status</dt><dd>evidence-accumulating</dd><dt>resolves</dt><dd>Jan 31 (2027-01-31)</dd><dt>next</dt><dd>Taiwan monthly print ~Dec 10</dd></dl><div class="det-asmt"><div class="lbl">Machine assessment <span class="sub">the sealed claim above is unchanged &middot; not graded</span></div><div class="alert">&#9888; low_confidence: confidence 4% &lt;= 10%</div><dl class="kv"><dt>case</dt><dd>Broadcom guides AI chip revenue to double to $115B in 2027 on TSM__AVGO__foundry_wafers; Huang-exit rotation into AVGO/TSMC is AI-content bid, not 10% wafer-cost multiple compression toward &lt;=480.</dd><dt>consensus</dt><dd>Street is strong_buy AVGO with mean target ~528 and treats TSMC supply as pure AI volume tailwind.</dd><dt>deviation</dt><dd>WEAKENING — live tape is AI-revenue doubling and foundry-capacity expansion, opposite of margin-shock compression.</dd><dt>synthesis</dt><dd>Keep the Jan-2027 &lt;=480 short stood down; transmission is AI content growth, not wafer-hike multiple crush.</dd><dt>confidence</dt><dd>Prior 2 nudged only slightly: bullish $115B AI guide and rotation raise the bar for a sub-480 close by Jan-2027.</dd><dt>trajectory</dt><dd>2% &rarr; 4% (+2 pts)</dd><dt>evidence</dt><dd><code>CBMi3wFBVV95cUxNU3hIbnVLdlY5bnZYNm</code> <code>CBMidkFVX3lxTFBLM1BDM3NTQUFKbWl5Ql</code> <code>CBMiugFBVV95cUxQZWxweEhscUdZTlVxN0</code></dd></dl></div></div></div></div></div><div class="band"><div class="col"><h2>Watching <span class="c">0</span></h2><div class="state-tile"><div class="big">No active watches.</div></div></div><div class="col"><h2>Tracked <span class="c">3</span></h2><div class="trow"><div class="id">jobA-20260727T075315Z-C5</div><div class="t">Equipment cluster priced idiosyncratically strong_buy but is one correlated 2Q-lagged capex bet.</div></div><div class="trow"><div class="id">jobA-20260727T075315Z-C6</div><div class="t">AAPL inverted target reads ex-growth, missing a TSM-locked refresh + Broadcom content lock (frame inversion).</div></div><div class="trow"><div class="id">jobA-20260729T064012Z-C12</div><div class="t">AAPL priced ex-growth (PT 318.8 &lt; price 333, only large-cap set to fall); an M5 Mac/iPhone hardware upcycle on TSM N2 sole-source plus refreshed Broadcom connectivity content.</div></div></div><div class="col"><h2>Shocks <span class="c">3</span></h2><div class="shockrow"><div class="id">SHK-AAPL · active</div><div class="t">at AAPL · dir +</div></div><div class="shockrow"><div class="id">proposed · stress 12.2626</div><div class="t">AAPL · dir +</div></div><div class="shockrow"><div class="id">proposed · stress 6.9785</div><div class="t">TSM__AAPL__leading_edge_soc · dir +</div></div><div class="shockrow"><div class="id">AMKR · lands 1</div><div class="t mono">+0.0805 · AAPL__AMKR__osat_packaging</div></div><div class="shockrow"><div class="id">TSM · lands 0</div><div class="t mono">+0.0408 · TSM__AAPL__leading_edge_soc</div></div><div class="shockrow"><div class="id">AVGO · lands 1</div><div class="t mono">+0.0360 · AVGO__AAPL__wireless_content</div></div><div class="shockrow"><div class="id">QCOM · lands 1</div><div class="t mono">+0.0255 · AAPL__QCOM__handset_modems</div></div><div class="shockrow"><div class="id">AVGO · lands 1</div><div class="t mono">+0.0174 · TSM__AAPL__leading_edge_soc → TSM__AVGO__foundry_wafers</div></div><div class="shockrow"><div class="id">AMD · lands 0</div><div class="t mono">+0.0139 · TSM__AAPL__leading_edge_soc → TSM__AMD__leading_edge_wafers</div></div></div><div class="col"><h2>Resolutions <span class="c">3</span></h2><div class="res disconfirm"><span class="verdict disconfirm">DISCONFIRM</span><span class="rx">observable not met</span><span class="rm">Oct 31</span></div><div class="res disconfirm"><span class="verdict disconfirm">DISCONFIRM</span><span class="rx">fails_if fired (pre-committed disconfirmation met)</span><span class="rm">Oct 31</span></div><div class="res disconfirm"><span class="verdict disconfirm">DISCONFIRM</span><span class="rx">fails_if fired (pre-committed disconfirmation met)</span><span class="rm">Oct 31</span></div></div></div><div class="region"><h2>Checkpoint outcomes <span class="c">0 settled since last pulse &middot; raw comparison, not a grade</span></h2><div class="cks"><div class="state-tile"><div class="big">No checkpoint passed</div><div class="sub">Nothing this record named as a checkpoint came due since the last pulse.</div></div></div></div><div class="foot"><span class="sha">sha256 b245bac411eb97a84e52257d55450422bcd0f94a32a7fe9ec0b8585df96797d7</span><span>verify: <a href="https://opentimestamps.org">opentimestamps.org</a> · epoch v1 · docs/PULSE-PAYLOAD.md (Blueprint v1.14)</span></div></div>
+<script>document.addEventListener('click',function(e){var t=e.target.closest('.tile,.wtile');if(t){t.classList.toggle('open');}});</script>
+</body></html>
